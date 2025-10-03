@@ -15,3 +15,7 @@ As a more complex scenario, this lab additionally simulates a configuration in w
 [Chapter 2 - Prepare the lab environment](1.2/README.md)
 
 [Chapter 3 - Configure proper storage folders on the server](1.3/README.md)
+
+[Chapter 4 - Download the Ubuntu Cloud image disk](1.4/README.md)
+
+[Chapter 5 - Customize the disk image with your personal data](1.5/README.md)
