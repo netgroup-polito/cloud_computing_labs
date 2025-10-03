@@ -19,3 +19,5 @@ As a more complex scenario, this lab additionally simulates a configuration in w
 [Chapter 4 - Download the Ubuntu Cloud image disk](1.4/README.md)
 
 [Chapter 5 - Customize the disk image with your personal data](1.5/README.md)
+
+[Chapter 6 - Create a new VM](1.6/README.md)
