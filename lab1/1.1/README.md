@@ -32,16 +32,13 @@ The Client VM represents our **management host**, which is used to configure our
 </p>
 <p align="center"><em>Figure 1: Physical setup — how to connect to your virtualized resources.</em></p>
 
----
-
-> **Note**: The case in which a **management host** connects and configures a **remote server** is very common in the real world.  
+> [!NOTE]
+> The case in which a **management host** connects and configures a **remote server** is very common in the real world.  
 > Access to the server via console is rather uncommon, since it would require the system administrator to physically reside in the datacenter.  
 >   
 > However, the system admin must be very careful with the network configuration of the server: if wrong commands are issued, you may lose network connectivity to the server, hence the possibility to configure the machine.  
 >   
 > This is why servers in a datacenter are often provided with a parallel network that is used to *remotize* access to the server console, either in case of emergency or for the initial setup of the machine.
-
----
 
 On the **server** side, this lab expects to create the configuration depicted in the next figure: two VMs connected to a L2 virtual switch (Linux Bridge), which is then connected to the Linux stack and from there to the Internet.  
 KVM will insert all the required NAT rules and routing table in order to allow VM1 and VM2 to connect to the Internet.
