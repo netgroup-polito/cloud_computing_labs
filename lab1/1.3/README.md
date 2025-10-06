@@ -6,9 +6,9 @@
 </table>
 
 # 3. Configure proper storage folders on the server
-
-**IMPORTANT:** Unless explicitly specified, all the instructions below apply to the **server**.  
-This lab assumes that the student is already logged into the server.
+> [!IMPORTANT]
+> Unless explicitly specified, all the instructions below apply to the **server**.  
+> This lab assumes that the student is already logged into the server.
 
 ---
 
