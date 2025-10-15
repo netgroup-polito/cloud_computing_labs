@@ -26,7 +26,7 @@ In this step we operate on the **management station**, exploiting the GUI-based 
     ssh-copy-id crownlabs@<server_IP>
     ```
 
-    replcing the `<server_IP>` with the IP address of the server that you can retrieve by using the command `ip a` command on the server terminal (use the IP of the `enp1s0` interface)
+    replcing the `<server_IP>` with the IP address of the server that you can retrieve by using the command `ip a` on the server terminal (use the IP of the `enp1s0` interface)
 2. Add a new connection to the server, either from the graphical interface (open the `virt-manager` application, then go to `file -> add connection`, then set the username and IP of the server), or leveraging the following command:
 
    ```bash
@@ -54,22 +54,21 @@ In this step we operate on the **management station**, exploiting the GUI-based 
    - Select **Import existing disk image**, then click Forward.  
      This is the preferred choice in this lab, as we have already a pre-installed disk, namely the Ubuntu Cloud Image retrieved earlier.
 
-   - Select **Local Install Media** (ISO image or CDROM), then click Forward: select this if you want to install a new VM using the installation disk. The install disk should be in ISO format.
+     ![Create a new VM: step 1](images/libvirt-create-vm-1.png)
 
-   ![Create a new VM: step 1](images/libvirt-create-vm-1.png)
-
-   ![Create a new VM: step 2 (before choosing storage path)](images/libvirt-create-vm-2a.png)
+   - Select **Local Install Media** (ISO image or CDROM): select this if you want to install a new VM using the installation disk. The install disk should be in ISO format. Not required in this lab.
 
    When you select the image location (ISO or pre-installed disk) by clicking *Browse*, a window *Choose Storage Volume* will appear. Initially it shows only the `Default` storage pool (`/var/lib/libvirt/images`).  
+
    Here you should configure the additional folders created before:
 
-   - Select the `+` icon (bottom right) to add a new storage pool.
+   - Select the `+` icon (bottom left) to add a new storage pool.
+      ![Available storage volumes (before adding)](images/libvirt-create-vm-storage-volume-1.png)
    - Choose a name for the new storage pool (e.g., `kvm-pool`), with type `dir: Filesystem Directory`; select the folder (e.g., `~/kvm-pool`) and press *Finish*.  
      Note: if you are connected to a remote machine, the *Browse* button may not work; in that case type the *Target Path* manually.
    - Repeat for the `~/kvm-iso` folder.
 
-   ![Available storage volumes (before adding)](images/libvirt-create-vm-storage-volume-1.png)
-   ![Create a new storage pool](images/libvirt-create-pool.png)
+      ![Create a new storage pool](images/libvirt-create-pool.png)
 
    After adding pools, you should see the default and new pools in the left pane (Figure below). Select the image/ISO and click *Choose Volume*.
 
@@ -82,18 +81,15 @@ In this step we operate on the **management station**, exploiting the GUI-based 
    ![Create a new VM: step 3](images/libvirt-create-vm-3.png)
 
 5. At the last step (Figure below), select *Customize configuration before install* to modify the virtual hardware and apply the following:
+  ![Create a new VM: step 4](images/libvirt-create-vm-4.png)
 
    - Remove unnecessary hardware (Display Spice, etc), keeping minimal configuration.
+      ![Virtual machine manager: minimal hardware](images/libvirt-customhw.png)
    - Add a new **disk device** used to load the `cloud-init` configuration created earlier.  
-     Steps: *Add Hardware → Storage → Disk device → Select or create custom image* and choose the ISO created in the `cloud-init` step.  
-> [!NOTE] 
-> The second disk should be a disk device; CD-ROM devices do not work.
+     Steps: *Add Hardware → Storage → Select or create custom image* and choose the ISO created in the `cloud-init` step.  
    - Expand the *Network Selection* section.
    - Ensure the VM is connected to the `default` virtual network with NAT. This allows Internet access using the hypervisor’s IP and bridged connectivity with other VMs on the same bridge.
-
-   ![Create a new VM: step 4](images/libvirt-create-vm-4.png)
-
-   ![Virtual machine manager: minimal hardware](images/libvirt-customhw.png)
+   
 
 You are now ready to start the VM and log in.
 
