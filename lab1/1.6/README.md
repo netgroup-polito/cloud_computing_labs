@@ -5,23 +5,37 @@
   </tr>
 </table>
 
+> [!IMPORTANT]
+> Unless explicitly specified, all the instructions below apply to the **client**.  
+> This lab assumes that the student is already logged into the client.
+
 # 6. Create a new VM
 
 In this step we operate on the **management station**, exploiting the GUI-based Virtual Machine Manager (`virt-manager`) that we presented in Section Setup Management Host.
 
-1. Add a new connection to the server, either from the graphical interface (`file -> add connection`, then set the username and IP of the server), or leveraging the following command:
+1. In case you use `virt-manager` to connect to a remote hypervisor through SSH, it is strongly encouraged to configure both server and client with SSH keys, as libvirt needs to open multiple SSH connections, one for each device (e.g., video card, keyboard, audio card, etc). Relying on classical `user/password` mechanisms would be annoying, since the user would be asked for the password several times.
+  To this end, generate a SSH key pair on the client using the same command as for the server:
+    
+    ```bash
+    ssh-keygen
+    ```
+
+    and copy the generated key to the server using the following:
+
+    ```bash
+    ssh-copy-id crownlabs@<server_IP>
+    ```
+
+    replcing the `<server_IP>` with the IP address of the server that you can retrieve by using the command `ip a` command on the server terminal (use the IP of the `enp1s0` interface)
+2. Add a new connection to the server, either from the graphical interface (open the `virt-manager` application, then go to `file -> add connection`, then set the username and IP of the server), or leveraging the following command:
 
    ```bash
    virt-manager -c 'qemu+ssh://crownlabs@<SERVER_IP>/system?keyfile=<PRIVATE_KEY>'
    ```
-   e.g.
+   e.g. (beware that this is just a representative example, do not copy and paste)
    ```bash
    virt-manager -c 'qemu+ssh://crownlabs@10.100.101.102/system?keyfile=/home/netlab/.ssh/id_rsa'
    ```
-
-
-> [!TIP]
-> In case you use `virt-manager` to connect to a remote hypervisor through SSH, it is strongly encouraged to configure both server and client with SSH keys, as libvirt needs to open multiple SSH connections, one for each device (e.g., video card, keyboard, audio card, etc). Relying on classical `user/password` mechanisms would be annoying, since the user would be asked for the password several times.
 
 > [!TIP]
 > In case you prefer to connect to the remote hypervisor through username/password, you should install the `ssh-askpass` package on your client machine:
@@ -34,7 +48,7 @@ In this step we operate on the **management station**, exploiting the GUI-based 
 > [!TIP] 
 > In case you are connecting from remote using the ssh configuration file stored in your personal profile (folder `.ssh` in your home directory), the above command line is ignored, as everything (except the destination IP address) is read from the configuration file. Hence, you can simply use the traditional connection wizard (File → Add connection) and fill in the required data.
 
-2. **Create a new VM** by going to *File > New Virtual Machine* (Figure: Create a new VM step 1).  
+3. **Create a new VM** by going to *File > New Virtual Machine* (Figure: Create a new VM step 1).  
    You can either:
 
    - Select **Import existing disk image**, then click Forward.  
@@ -63,11 +77,11 @@ In this step we operate on the **management station**, exploiting the GUI-based 
 
    Then select the OS type (*Linux*), version (*Ubuntu 20.04*) and press *Forward*.
 
-3. Select memory and CPU to allocate. Given the constrained environment, 512 MB RAM and 1 CPU are appropriate.
+4. Select memory and CPU to allocate. Given the constrained environment, 512 MB RAM and 1 CPU are appropriate.
 
    ![Create a new VM: step 3](images/libvirt-create-vm-3.png)
 
-4. At the last step (Figure below), select *Customize configuration before install* to modify the virtual hardware and apply the following:
+5. At the last step (Figure below), select *Customize configuration before install* to modify the virtual hardware and apply the following:
 
    - Remove unnecessary hardware (Display Spice, etc), keeping minimal configuration.
    - Add a new **disk device** used to load the `cloud-init` configuration created earlier.  
