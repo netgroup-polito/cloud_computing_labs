@@ -5,8 +5,7 @@ This is the default hypervisor in Linux, oriented to production-grade virtualiza
 
 As a more complex scenario, this lab additionally simulates a configuration in which two hosts that belong to different LANs can exchange traffic through a router, connected to the same switched network of the previous hosts.
 
-**EXTRA**: In addition to this text, we provide several videos which discuss some parts of the topics of this lab. You can find them on [YouTube](https://www.youtube.com/playlist?list=PLTAfidx4guQImT5beuAs4YAhIzuBBoEHk)  
-([playlist link](https://www.youtube.com/playlist?list=PLTAfidx4guQImT5beuAs4YAhIzuBBoEHk)).
+**EXTRA**: In addition to this text, we provide several videos which discuss some parts of the topics of this lab. You can find them on [YouTube](https://www.youtube.com/playlist?list=PLTAfidx4guQImT5beuAs4YAhIzuBBoEHk).
 
 ## Table of contents 
 
