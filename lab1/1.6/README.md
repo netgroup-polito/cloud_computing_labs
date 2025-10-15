@@ -20,19 +20,19 @@ In this step we operate on the **management station**, exploiting the GUI-based 
    ```
 
 
-    > [!TIP]
-    > In case you use `virt-manager` to connect to a remote hypervisor through SSH, it is strongly encouraged to configure both server and client with SSH keys, as libvirt needs to open multiple SSH connections, one for each device (e.g., video card, keyboard, audio card, etc). Relying on classical `user/password` mechanisms would be annoying, since the user would be asked for the password several times.
+> [!TIP]
+> In case you use `virt-manager` to connect to a remote hypervisor through SSH, it is strongly encouraged to configure both server and client with SSH keys, as libvirt needs to open multiple SSH connections, one for each device (e.g., video card, keyboard, audio card, etc). Relying on classical `user/password` mechanisms would be annoying, since the user would be asked for the password several times.
 
-    > [!TIP]
-    > In case you prefer to connect to the remote hypervisor through username/password, you should install the `ssh-askpass` package on your client machine:
-    > ```bash
-    > sudo apt install ssh-askpass
-    > ```
-    > so that `virt-manager` can open a new window for you to type the password in.
+> [!TIP]
+> In case you prefer to connect to the remote hypervisor through username/password, you should install the `ssh-askpass` package on your client machine:
+> ```bash
+> sudo apt install ssh-askpass
+> ```
+> so that `virt-manager` can open a new window for you to type the password in.
 
 
-    > [!TIP] 
-    > In case you are connecting from remote using the ssh configuration file stored in your personal profile (folder `.ssh` in your home directory), the above command line is ignored, as everything (except the destination IP address) is read from the configuration file. Hence, you can simply use the traditional connection wizard (File → Add connection) and fill in the required data.
+> [!TIP] 
+> In case you are connecting from remote using the ssh configuration file stored in your personal profile (folder `.ssh` in your home directory), the above command line is ignored, as everything (except the destination IP address) is read from the configuration file. Hence, you can simply use the traditional connection wizard (File → Add connection) and fill in the required data.
 
 2. **Create a new VM** by going to *File > New Virtual Machine* (Figure: Create a new VM step 1).  
    You can either:
