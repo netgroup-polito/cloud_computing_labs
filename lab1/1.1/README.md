@@ -16,9 +16,11 @@ For this reason, major Linux distributions, such as Ubuntu, already provide pre-
 
 - **[Ubuntu Minimized Cloud Images](https://cloud-images.ubuntu.com/minimal/)** are the official pre-installed disk images that have been customized to have a small runtime footprint in order to increase workload density in environments where humans are not expected to log in. More information at [Minimal Ubuntu Released](https://ubuntu.com/blog/minimal-ubuntu-released).  
 
-**Note (1):** this lab will use the *Ubuntu Cloud Images*.  
+> [!NOTE]
+> This lab will use the *Ubuntu Cloud Images*.  
 
-**Note (2):** installation instructions for KVM can be found in *Appendix: Setup KVM*; here we just assume that KVM (and the additional modules such as the `virt-manager` GUI) are already set up in your environment.
+> [!NOTE]
+> Installation instructions for KVM can be found in *Appendix: Setup KVM*; here we just assume that KVM (and the additional modules such as the `virt-manager` GUI) are already set up in your environment.
 
 ## 1.1. Physical and logical setup
 
