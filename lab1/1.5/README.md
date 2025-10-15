@@ -53,7 +53,7 @@ In any case, be careful that the access via username/password is considered less
        shell: /bin/bash
    ```
 
-   > [!WARNING] 
+   > [!WARNING]
    > YAML indentation is critical. Do not use tabs and ensure consistent spaces.
 
 4. Create another text file named `meta-data` with the following content:
