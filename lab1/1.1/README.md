@@ -20,12 +20,12 @@ For this reason, major Linux distributions, such as Ubuntu, already provide pre-
 > This lab will use the *Ubuntu Cloud Images*.  
 
 > [!NOTE]
-> Installation instructions for KVM can be found in *Appendix: Setup KVM*; here we just assume that KVM (and the additional modules such as the `virt-manager` GUI) are already set up in your environment.
+> Installation instructions for KVM can be found in *Appendix: Setup KVM*; here we just assume that KVM (and the additional modules such as the `virt-manager` GUI) are already set up in your environment. This is the case when using the VMs provided in Crownlabs.
 
 ## 1.1. Physical and logical setup
 
 This lab requires a physical setup such as depicted in the figure below.  
-Each student will be provided with two VMs running in the POLITO datacenter on the [CrownLabs platform](https://crownlabs.polito.it), one acting as **Client** and one representing our **server**.
+Each student will be provided with two VMs running in the POLITO datacenter on the [CrownLabs platform](https://crownlabs.polito.it), one acting as **Client** (using the template Cloud Computing: Client VM) and one representing our **server** (using the template Cloud Computing: KVM).
 
 The Client VM represents our **management host**, which is used to configure our (remote) server environment.
 
