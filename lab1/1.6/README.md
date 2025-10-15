@@ -72,7 +72,8 @@ In this step we operate on the **management station**, exploiting the GUI-based 
    - Remove unnecessary hardware (Display Spice, etc), keeping minimal configuration.
    - Add a new **disk device** used to load the `cloud-init` configuration created earlier.  
      Steps: *Add Hardware → Storage → Disk device → Select or create custom image* and choose the ISO created in the `cloud-init` step.  
-     > **Note:** the second disk should be a disk device; CD-ROM devices do not work.
+> [!NOTE] 
+> The second disk should be a disk device; CD-ROM devices do not work.
    - Expand the *Network Selection* section.
    - Ensure the VM is connected to the `default` virtual network with NAT. This allows Internet access using the hypervisor’s IP and bridged connectivity with other VMs on the same bridge.
 
