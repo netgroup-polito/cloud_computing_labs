@@ -10,7 +10,8 @@
 Cloud images are operating system templates and every instance starts out as an identical clone of every other instance.  
 Before running the instance, images may need to be customized (e.g., adding software packages, modifying configuration parameters such as network, or creating proper credentials for login).
 
-⚠️ **Security note**: the default user account on the Ubuntu image (`ubuntu`) has login disabled from both console and SSH.
+> [!NOTE]
+> Security: the default user account on the Ubuntu image (`ubuntu`) has login disabled from both console and SSH.
 
 In this lab, you simply need to enable a user account to be able to login.  
 Two possible procedures are presented:
@@ -35,7 +36,7 @@ In any case, be careful that the access via username/password is considered less
 1. If you don’t already have them, create a pair of public/private SSH keys with `ssh-keygen`.  
    A good reference is [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604) (only Step 1 is needed).
 
-2. Create a new text file named `user-data`.  
+2. Create a new text file named `user-data` in your home directory.  
    If unfamiliar with Linux console editors, `nano` is a simple choice.
 
 3. Write the following content in the file, replacing the `ssh-rsa ...` line with the full text of your own public key (usually found in `~/.ssh/id_rsa.pub`):
@@ -52,7 +53,8 @@ In any case, be careful that the access via username/password is considered less
        shell: /bin/bash
    ```
 
-   ⚠️ **Warning**: YAML indentation is critical. Do not use tabs and ensure consistent spaces.
+   > [!WARNING] 
+   > YAML indentation is critical. Do not use tabs and ensure consistent spaces.
 
 4. Create another text file named `meta-data` with the following content:
 
