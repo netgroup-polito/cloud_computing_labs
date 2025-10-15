@@ -19,17 +19,17 @@ In this step we operate on the **management station**, exploiting the GUI-based 
    virt-manager -c 'qemu+ssh://crownlabs@10.100.101.102/system?keyfile=/home/netlab/.ssh/id_rsa'
    ```
 
-   **Note (1):** in case you use `virt-manager` to connect to a remote hypervisor through SSH, it is strongly encouraged to configure both server and client with SSH keys, as libvirt needs to open multiple SSH connections, one for each device (e.g., video card, keyboard, audio card, etc). Relying on classical `user/password` mechanisms would be annoying, since the user would be asked for the password several times.
 
-   **Note (2):** in case you prefer to connect to the remote hypervisor through username/password, you should install the `ssh-askpass` package on your client machine:
+    > **TIP**: in case you use `virt-manager` to connect to a remote hypervisor through SSH, it is strongly encouraged to configure both server and client with SSH keys, as libvirt needs to open multiple SSH connections, one for each device (e.g., video card, keyboard, audio card, etc). Relying on classical `user/password` mechanisms would be annoying, since the user would be asked for the password several times.
 
-   ```bash
-   sudo apt install ssh-askpass
-   ```
+    > **TIP**: in case you prefer to connect to the remote hypervisor through username/password, you should install the `ssh-askpass` package on your client machine:
+    >   ```bash
+    >   sudo apt install ssh-askpass
+    >   ```
+    >   so that `virt-manager` can open a new window for you to type the password in.
 
-   so that `virt-manager` can open a new window for you to type the password in.
 
-   **Note (3):** in case you are connecting from remote using the ssh configuration file stored in your personal profile (folder `.ssh` in your home directory), the above command line is ignored, as everything (except the destination IP address) is read from the configuration file. Hence, you can simply use the traditional connection wizard (File → Add connection) and fill in the required data.
+    > **TIP**: in case you are connecting from remote using the ssh configuration file stored in your personal profile (folder `.ssh` in your home directory), the above command line is ignored, as everything (except the destination IP address) is read from the configuration file. Hence, you can simply use the traditional connection wizard (File → Add connection) and fill in the required data.
 
 2. **Create a new VM** by going to *File > New Virtual Machine* (Figure: Create a new VM step 1).  
    You can either:
@@ -69,7 +69,7 @@ In this step we operate on the **management station**, exploiting the GUI-based 
    - Remove unnecessary hardware (Display Spice, etc), keeping minimal configuration.
    - Add a new **disk device** used to load the `cloud-init` configuration created earlier.  
      Steps: *Add Hardware → Storage → Disk device → Select or create custom image* and choose the ISO created in the `cloud-init` step.  
-     **Note:** the second disk should be a disk device; CD-ROM devices do not work.
+     > **Note:** the second disk should be a disk device; CD-ROM devices do not work.
    - Expand the *Network Selection* section.
    - Ensure the VM is connected to the `default` virtual network with NAT. This allows Internet access using the hypervisor’s IP and bridged connectivity with other VMs on the same bridge.
 
@@ -95,7 +95,8 @@ sudo apt install iperf3 iputils-ping
 Repeat the steps to start a second VM.  
 Use a fresh copy of the vanilla `.img` file and create another initialization disk for `cloud-init` (e.g., prompt name `test-vm2`).
 
-**Note:** Cloning the first VM is possible but troublesome, as not all `cloud-init` steps are re-executed and some identifiers (like network config) may conflict, leading to issues such as both VMs having the same IP.
+> [!WARNING]
+> Cloning the first VM is possible but troublesome, as not all `cloud-init` steps are re-executed and some identifiers (like network config) may conflict, leading to issues such as both VMs having the same IP.
 
 ## 6.3. Measure the network performance between the two VMs
 
