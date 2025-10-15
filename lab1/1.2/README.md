@@ -28,10 +28,20 @@ Access the server **from your management host** with:
 ssh crownlabs@IP_of_KVM_VM
 ```
 
-If you are successfully authenticated, configure a proper SSH key pair. Key pairs rely on asymmetric authentication and are normally preferable for SSH. Key-based authentication allows you to disable password authentication (reducing the risk of dictionary attacks) and can be non-interactive — enabling automated, agentless configuration workflows (used by tools such as Ansible).
+> [!IMPORTANT]
+> If requested, the password for the crownlabs user is `crownlabs`
+
+
+If you are successfully authenticated, configure a proper SSH key pair on the server. Key pairs rely on asymmetric authentication and are normally preferable for SSH. Key-based authentication allows you to disable password authentication (reducing the risk of dictionary attacks) and can be non-interactive — enabling automated, agentless configuration workflows (used by tools such as Ansible).
 
 Once you have accessed the server via SSH, make sure the crownlabs account has permission to interact with the libvirt daemon by adding it to the corresponding group:
 
 ```bash
 sudo adduser crownlabs libvirt
+```
+
+And generate the SSH key pair by using the following command, filling all the information requested in the prompt. Note that if some of the fields are left blank, default values will be applied (preferred choice):
+
+```bash
+ssh-keygen
 ```
