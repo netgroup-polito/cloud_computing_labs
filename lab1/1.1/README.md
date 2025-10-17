@@ -20,7 +20,7 @@ For this reason, major Linux distributions, such as Ubuntu, already provide pre-
 > This lab will use the *Ubuntu Cloud Images*.  
 
 > [!NOTE]
-> Installation instructions for KVM can be found in *Appendix: Setup KVM*; here we just assume that KVM (and the additional modules such as the `virt-manager` GUI) are already set up in your environment. This is the case when using the VMs provided in Crownlabs.
+> Installation instructions for KVM can be found in [Appendix: Setup KVM](../appendix/README); here we just assume that KVM (and the additional modules such as the `virt-manager` GUI) are already set up in your environment. This is the case when using the VMs provided in Crownlabs.
 
 ## 1.1. Physical and logical setup
 

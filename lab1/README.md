@@ -24,3 +24,5 @@ As a more complex scenario, this lab additionally simulates a configuration in w
 [Chapter 7 - Inspect the Network Configuration](1.7/README.md)
 
 [Chapter 8 - Exchange Traffic Between Two VMs Through a Third VM Acting as Router](1.8/README.md)
+
+[Appendix: Setup KVM](appendix/README)
