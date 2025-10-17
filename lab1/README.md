@@ -20,3 +20,7 @@ As a more complex scenario, this lab additionally simulates a configuration in w
 [Chapter 5 - Customize the disk image with your personal data](1.5/README.md)
 
 [Chapter 6 - Create a new VM](1.6/README.md)
+
+[Chapter 7 - Inspect the Network Configuration](1.7/README.md)
+
+[Chapter 8 - Exchange Traffic Between Two VMs Through a Third VM Acting as Router](1.8/README.md)
