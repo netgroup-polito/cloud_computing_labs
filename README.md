@@ -2,10 +2,12 @@
 
 ## Repository Structure
 
-<a href="./lab1/README.md" style="display: flex; align-items: center; text-decoration: none;">
-  <img src="./images/kvm.png" alt="Lab1 Icon" width="50" style="margin-right: 10px;">
-  <span>Lab1 - Computing Virtualization with KVM</span>
-</a>
+<table>
+  <tr>
+    <td><img src="./images/kvm.png" alt="Lab1 Icon" width="50"></td>
+    <td><a href="./lab1/README.md"><b>Lab1 - Computing Virtualization with KVM</b></a></td>
+  </tr>
+</table>
 
 
 
