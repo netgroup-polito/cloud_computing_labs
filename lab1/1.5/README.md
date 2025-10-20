@@ -51,6 +51,13 @@ In any case, be careful that the access via username/password is considered less
        sudo: ALL=(ALL) NOPASSWD:ALL
        groups: sudo
        shell: /bin/bash
+   # Password for the 'default' user (i.e., 'ubuntu' in Ubuntu cloud images)
+   password: lab1pwd
+   # Password does not have to be changed at first login
+   chpasswd: { expire: false }
+   # Uncomment this line if you want to use username/password when
+   # logging in also from network (ssh)
+   #ssh_pwauth: true
    ```
 
    > [!WARNING]
