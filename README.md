@@ -1,5 +1,14 @@
 # Cloud Computing Course Laboratories
 
+## Repository Structure
+
+<a href="./lab1/README.md" style="display: flex; align-items: center; text-decoration: none;">
+  <img src="./images/kvm.png" alt="Lab1 Icon" width="50" style="margin-right: 10px;">
+  <span>Lab1 - Computing Virtualization with KVM</span>
+</a>
+
+
+
 ## License
 
 This work is licensed under a **Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License**.
@@ -23,7 +32,4 @@ More information on the [Creative Commons website](http://creativecommons.org).
 
 The author would like to thank all the people who contributed to this document
 
-## Repository Structure
-
-[Lab1 - Computing Virtualization with KVM](./lab1/README.md)
 
