@@ -91,7 +91,7 @@ In this step we operate on the **management station**, exploiting the GUI-based 
    - Ensure the VM is connected to the `default` virtual network with NAT. This allows Internet access using the hypervisor’s IP and bridged connectivity with other VMs on the same bridge.
    
 
-You are now ready to start the VM and log in.
+You are now ready to start the VM and log in using the `virt-manager` console by typing username and password previously defined in the `cloud-init` ([here](https://github.com/netgroup-polito/cloud_computing_labs/blob/main/lab1/1.5/README.md#51-cloud-init-preferred)).
 
 ## 6.1. Start and customize the VM
 
