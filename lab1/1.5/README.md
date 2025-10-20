@@ -7,14 +7,13 @@
 
 # 5. Customize the disk image with your personal data
 
-Cloud images are operating system templates and every instance starts out as an identical clone of every other instance.  
+Cloud images are operating system templates, and every instance starts out as an identical clone of every other instance.  
 Before running the instance, images may need to be customized (e.g., adding software packages, modifying configuration parameters such as network, or creating proper credentials for login).
 
-> [!NOTE]
-> Security: the default user account on the Ubuntu image (`ubuntu`) has login disabled from both console and SSH.
+In this part of the lab, your goal is to enable a user account so it can log in. This is a common operation because many cloud images come with login disabled by default for security reasons.
+For example, on the Ubuntu image, the default user (`ubuntu`) cannot log in through either the console or SSH. 
 
-In this lab, you simply need to enable a user account to be able to login.  
-Two possible procedures are presented:
+To enable a user account to be able to login, two possible procedures are presented:
 
 1. **Using `cloud-init` (preferred)**
 2. **Using `virt-customize`**
