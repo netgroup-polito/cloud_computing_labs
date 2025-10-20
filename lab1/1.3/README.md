@@ -7,7 +7,7 @@
 
 # 3. Configure proper storage folders on the server
 > [!IMPORTANT]
-> Unless explicitly specified, all the instructions below apply to the **server**.  
+> Unless explicitly specified, all the instructions below apply to the **server** (i.e., `Cloud Computing: KVM` template VM in Crownlabs).  
 > This lab assumes that the student is already logged into the server.
 
 ---
