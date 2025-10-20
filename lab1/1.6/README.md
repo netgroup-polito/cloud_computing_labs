@@ -82,14 +82,12 @@ In this step we operate on the **management station**, exploiting the GUI-based 
 
 5. At the last step (Figure below), select *Customize configuration before install* to modify the virtual hardware and apply the following:
   ![Create a new VM: step 4](images/libvirt-create-vm-4.png)
-
+   - Expand the *Network Selection* section.
+   - Ensure the VM is connected to the `default` virtual network with NAT. This allows Internet access using the hypervisor’s IP and bridged connectivity with other VMs on the same bridge.
    - Remove unnecessary hardware (Display Spice, etc), keeping minimal configuration.
       ![Virtual machine manager: minimal hardware](images/libvirt-customhw.png)
    - Add a new **disk device** used to load the `cloud-init` configuration created earlier.  
      Steps: *Add Hardware → Storage → Select or create custom image* and choose the ISO created in the `cloud-init` step.  
-   - Expand the *Network Selection* section.
-   - Ensure the VM is connected to the `default` virtual network with NAT. This allows Internet access using the hypervisor’s IP and bridged connectivity with other VMs on the same bridge.
-   
 
 You are now ready to start the VM and log in using the `virt-manager` console by typing username and password previously defined in the `cloud-init` ([here](https://github.com/netgroup-polito/cloud_computing_labs/blob/main/lab1/1.5/README.md#51-cloud-init-preferred)).
 
@@ -106,8 +104,12 @@ sudo apt install iperf3 iputils-ping
 
 ## 6.2. Start a second VM
 
-Repeat the steps to start a second VM.  
-Use a fresh copy of the vanilla `.img` file and create another initialization disk for `cloud-init` (e.g., prompt name `test-vm2`).
+Repeat the steps to start a second VM (here in short as a reminder):  
+- Create two new directories (`kvm-pool2` and `kvm-iso2`) on the server VM
+- Copy the ubuntu preinstalled vanilla image file (the one saved in the home directory)
+- Modify the `meta-data` file, changing the hostname for the machine (prompt name `test-vm2`)
+- Generate the cloud-init again, and copy to the `kvm-iso2` directory
+- In the VM installation process remember to select the two new volumes
 
 > [!WARNING]
 > Cloning the first VM is possible but troublesome, as not all `cloud-init` steps are re-executed and some identifiers (like network config) may conflict, leading to issues such as both VMs having the same IP.
