@@ -76,10 +76,10 @@ sudo brctl show
 Example output:
 
 ```
-bridge name	bridge id		     STP enabled	   interfaces
-virbr0      8000.52540082cd11	   yes             virbr0-nic
-                                                 vnet0
-                                                 vnet1
+bridge name	  bridge id		       STP enabled	   interfaces
+virbr0        8000.52540082cd11	   yes             virbr0-nic
+                                                   vnet0
+                                                   vnet1
 ```
 
 You can also find which MAC addresses correspond to which vNIC and detect which VM is attached:
