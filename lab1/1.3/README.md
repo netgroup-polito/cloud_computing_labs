@@ -12,12 +12,16 @@
 
 ---
 
-In order to create new VMs, we may need to store:  
-- A set of ISO images (OS install disks or configuration disks used by `cloud-init`)  
-- A set of VM images (the actual installed VM images) on the KVM server.  
+To create new VMs, we may need to store:  
+- A set of ISO disk images
+  - Generic disk images to be mounted for the VM (e.g, as CDs or drive media) 
+  - Commonly used for OS install disks or configuration disks used by `cloud-init`.  
+- A set of VM images on the KVM server.
+  - A disk image where an OS was already installed, so you can boot it directly without having to go through OS installation disks beforehand
+  - Handy, but we need a way to change it slightly according to our needs. We will explain how in this lab.
 
 To avoid polluting your system, you should create two new directories:  
-- One to keep your ISO (install) disks  
+- One to keep your ISO (install/configuration) disks  
 - One for your storage pools (installed VM images)  
 
 The default storage pool in KVM is `/var/lib/libvirt/images`.  
