@@ -1,3 +1,10 @@
+<table style="width:100%">
+  <tr>
+    <td align="left"><a href="../1.1/README.md">⬅️ Back to Sec 1.1</a></td>
+    <td align="left"><a href="../README.md">⬅️ Back to Home</a></td>
+  </tr>
+</table>
+
 # Appendix: setting up KVM 
 
 If you are using the VM provided with the lab, you can skip this section.
