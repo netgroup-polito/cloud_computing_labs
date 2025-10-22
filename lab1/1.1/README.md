@@ -25,7 +25,7 @@ For this reason, major Linux distributions, such as Ubuntu, already provide pre-
 ## 1.1. Physical and logical setup
 
 This lab requires a physical setup such as depicted in the figure below.  
-Each student will be provided with two VMs running in the POLITO datacenter on the [CrownLabs platform](https://crownlabs.polito.it), one acting as **Client** (using the template Cloud Computing: Client VM) and one representing our **server** (using the template Cloud Computing: KVM).
+Each student will be provided with two VMs running in the POLITO datacenter on the [CrownLabs platform](https://preprod.crownlabs.polito.it), one acting as **Client** (using the template Cloud Computing: Client VM) and one representing our **server** (using the template Cloud Computing: KVM).
 
 The Client VM represents our **management host**, which is used to configure our (remote) server environment.
 
