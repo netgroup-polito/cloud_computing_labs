@@ -19,7 +19,7 @@ As mentioned before, a subset of network configurations can also be set via the 
 After installing Libvirt on a Linux system, a *default virtual network* is provided out of the box. You can verify its configuration by typing:
 
 ```bash
-virsh net-list --all
+sudo virsh net-list --all
 ```
 
 Output:
