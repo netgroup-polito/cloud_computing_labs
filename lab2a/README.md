@@ -15,3 +15,9 @@ You will experiment with some of these techniques, namely **namespaces** and **c
 ## Table of contents 
 
 [Chapter 1 - Physical setup](./1.1/README.md)
+
+[Chapter 2 - Traditional Filesystem Isolation](./1.2/README.md)
+
+[Chapter 3 - Linux Namespaces](./1.3/README.md)
+
+[Chapter 4 - Process ID Namespaces](./1.4/README.md)
