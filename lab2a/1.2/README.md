@@ -1,7 +1,7 @@
 <table style="width:100%">
   <tr>
-    <td align="left"><a href="../README.md">⬅️ Previous</a></td>
-    <td align="right"><a href="../1.2/README.md">Next ➡️</a></td>
+    <td align="left"><a href="../1.1/README.md">⬅️ Previous</a></td>
+    <td align="right"><a href="../1.3/README.md">Next ➡️</a></td>
   </tr>
 </table>
 
