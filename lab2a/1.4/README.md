@@ -55,7 +55,7 @@ Back on the Host (Initial Namespace:
 **Question:** Can you identify the `/bin/bash` (PID 1 in the new namespace) and `htop` processes running in the newly created namespace? If yes, what are the PIDs associated with them **on the host system**?
 
 > [!TIP]
-> They will appear as children of the `unshare` command you ran.*
+> They will appear as children of the `unshare` command you ran.
 
 -----
 
