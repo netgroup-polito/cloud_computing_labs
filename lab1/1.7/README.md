@@ -105,7 +105,7 @@ Then modify the following fields in `br1.xml`:
 - Change the **bridge name** (if it does not exist, Libvirt will create it).
 - Delete the **MAC address** (it will be regenerated).
 - Remove the **forwarding** section to create an internal network.
-- Assign another **subnet** in the `ip` element, adjusting the `dhcp` configuration accordingly.
+- Assign another **subnet** in the `ip` element, adjusting the `dhcp` configuration accordingly. (**NOTE:** make sure to use a different subnet, otherwise `virt-manager` will try to connect the new network to the already existing bridge)
 
 Validate the network file:
 

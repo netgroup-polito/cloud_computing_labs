@@ -102,6 +102,12 @@ sudo apt update
 sudo apt install iperf3 iputils-ping
 ```
 
+> [!WARNING]
+> In some cases, the VM fails to retrieve the IP from the DHCP. To fix this, you can rely on the following command to request the IP to the DHCP: 
+>  ```bash
+>  sudo dhclient
+>  ```
+
 ## 6.2. Start a second VM
 
 Repeat the steps to start a second VM (here in short as a reminder):  
@@ -113,6 +119,12 @@ Repeat the steps to start a second VM (here in short as a reminder):
 
 > [!WARNING]
 > Cloning the first VM is possible but troublesome, as not all `cloud-init` steps are re-executed and some identifiers (like network config) may conflict, leading to issues such as both VMs having the same IP.
+
+> [!WARNING]
+> In some cases, the VM fails to retrieve the IP from the DHCP. To fix this, you can rely on the following command to request the IP to the DHCP: 
+>  ```bash
+>  sudo dhclient
+>  ```
 
 ## 6.3. Measure the network performance between the two VMs
 
