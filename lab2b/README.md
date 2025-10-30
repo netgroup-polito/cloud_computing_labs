@@ -21,4 +21,6 @@ You can find them at the following link:
 
 [Chapter 3 - Familiarizing with Docker](./1.3/README.md)
 
+[Chapter 4 - Running a Real Service (LAMP Stack)](./1.3/README.md)
+
 
