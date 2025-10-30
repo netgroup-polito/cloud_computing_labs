@@ -25,3 +25,5 @@ You will experiment with some of these techniques, namely **namespaces** and **c
 [Chapter 5 - Mount (MNT) Namespaces](./1.5/README.md)
 
 [Chapter 6 - Network Namespaces](./1.6/README.md)
+
+[Chapter 7 - Linux cgroups](./1.7/README.md)
