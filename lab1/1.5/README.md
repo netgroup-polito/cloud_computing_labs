@@ -109,7 +109,8 @@ Observations:
 
 ## 5.2. Virt-customize (not needed in lab)
 
-> **IMPORTANT**: This section is for reference only. **Do not perform these steps in the lab.**
+> [!IMPORTANT]
+> This section is for reference only. **Do not perform these steps in the lab.**
 
 [`virt-customize`](http://libguestfs.org/virt-customize.1.html) (from the optional `libvirt` package `libguestfs-tools`) can modify a disk image directly.  
 Unlike `cloud-init` (which changes the OS at boot), `virt-customize` permanently alters the image filesystem.
