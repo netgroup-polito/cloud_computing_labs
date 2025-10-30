@@ -21,3 +21,7 @@ You will experiment with some of these techniques, namely **namespaces** and **c
 [Chapter 3 - Linux Namespaces](./1.3/README.md)
 
 [Chapter 4 - Process ID Namespaces](./1.4/README.md)
+
+[Chapter 5 - Mount (MNT) Namespaces](./1.5/README.md)
+
+[Chapter 6 - Network Namespaces](./1.6/README.md)
