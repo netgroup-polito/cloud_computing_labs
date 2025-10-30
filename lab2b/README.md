@@ -21,6 +21,10 @@ You can find them at the following link:
 
 [Chapter 3 - Familiarizing with Docker](./1.3/README.md)
 
-[Chapter 4 - Running a Real Service (LAMP Stack)](./1.3/README.md)
+[Chapter 4 - Running a Real Service (LAMP Stack)](./1.4/README.md)
+
+[Chapter 5 - Using Docker Compose to Coordinate Multiple Containers](./1.5/README.md)
+
+[Chapter 6 - Additional “Do It Yourself” Exercises](./1.6/README.md)
 
 
