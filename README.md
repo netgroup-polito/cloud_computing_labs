@@ -8,8 +8,13 @@
     <td><a href="./lab1/README.md"><b>Lab1 - Computing Virtualization with KVM</b></a></td>
   </tr>
    <tr>
-    <td><img src="./images/cgroup.png" alt="Lab2 Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
+    <td><img src="./images/cgroup.png" alt="Lab2a Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
     <td><a href="./lab2a/README.md"><b>Lab2a - CGroups and Namespaces</b></a></td>
+  </tr>
+  </tr>
+   <tr>
+    <td><img src="./images/docker.png" alt="Lab2b Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
+    <td><a href="./lab2b/README.md"><b>Lab2b - Docker</b></a></td>
   </tr>
 </table>
 
