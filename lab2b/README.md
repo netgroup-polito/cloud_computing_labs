@@ -16,3 +16,5 @@ You can find them at the following link:
 ## Table of contents 
 
 [Chapter 1 - Physical setup](./1.1/README.md)
+
+[Chapter 2 - Docker](./1.2/README.md)
