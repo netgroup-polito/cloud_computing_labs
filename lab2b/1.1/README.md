@@ -7,7 +7,7 @@
 
 # 1. Physical Setup
 
-![Physical setup: how to connect to your virtualized resources.](images/Lab-physical-setup.png)
+![Physical setup: how to connect to your virtualized resources.](images/lab-physical-setup.png)
 *Figure: Physical setup – how to connect to your virtualized resources.*
 
 This laboratory requires a physical setup as shown in the figure above.
