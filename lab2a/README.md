@@ -1,4 +1,4 @@
-# Introduction
+# CGroups and Namespaces
 
 The goal of this laboratory is to guide the reader through the main technologies behind **lightweight virtualization** and some of its possible applications.
 
