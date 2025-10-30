@@ -56,7 +56,7 @@ echo '<html><body><h1>Hello world!</h1></body></html>' > htdocs/index.html
 
 Now, refresh the web page — you should see your new content.
 
-> [|IMPORTANT]
+> [!IMPORTANT]
 > Directly modifying files inside containers is almost always a **bad practice**.
 > Changes are not persisted in the base image, and will be lost if a new container is created.
 > Even embedding code within an image (via a Dockerfile) would require rebuilding the image each time, which is inefficient for fast development cycles.
