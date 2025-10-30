@@ -18,3 +18,7 @@ You can find them at the following link:
 [Chapter 1 - Physical setup](./1.1/README.md)
 
 [Chapter 2 - Docker](./1.2/README.md)
+
+[Chapter 3 - Familiarizing with Docker](./1.3/README.md)
+
+
