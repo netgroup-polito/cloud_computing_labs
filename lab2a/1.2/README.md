@@ -43,6 +43,9 @@ mkdir --parents docker-lab/chroot/bin
 cp --verbose /bin/bash docker-lab/chroot/bin
 ```
 
+> [!NOTE]
+> We need to copy the `bash` executable into the `chroot` environment because, by changing the root directory, the system loses access to the commands and executables from the host system. Without providing the necessary commands (like `bash`), we wouldn't be able to perform any actions within the `chroot` environment.
+
 Before executing the `chroot` command, you need to copy to the chroot system all the libraries required by `bash`, which can be listed by typing `ldd /bin/bash`.
 
 In this respect, please, note that:
