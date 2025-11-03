@@ -44,27 +44,27 @@ While VMs are **hardware abstractions** (requiring to boot a full operating syst
 
 ### 3.1.2. Common Docker commands
 
-```bash
-sudo docker image ls
-```
-
-Shows all the images locally available. You should see only the `hello-world` image.
-
-```bash
-sudo docker container ls
-```
+Shows all the images locally available.
+  ```bash
+  sudo docker image ls
+  ```
+  > You should see only the `hello-world` image.
 
 Shows the containers that are *currently* running.
-Since none are running, this should show nothing.
+  ```bash
+  sudo docker container ls
+  ```
+  > Since none are running, this should show nothing.
 
-```bash
-sudo docker container ls -a
-```
 
-Lists *all* containers ever run, including stopped ones such as `hello-world` with the `Exited` status.
+Lists *all* containers ever run, including stopped ones
+  ```bash
+  sudo docker container ls -a
+  ```
+  > Shows `hello-world` with the `Exited` status.
 
 > [!NOTE]
-> If you do not assign a name to a container with the `--name` option, Docker assigns a random one (e.g., `nostalgic_mccarthy`).
+> If you do not assign a name to a container during creation with the `--name` option, Docker assigns a random one (e.g., `nostalgic_mccarthy`).
 > It is the concatenation of an adjective and a name for easier memorization.
 
 **Exercise:** Take note of the name assigned to your container.
@@ -185,8 +185,10 @@ killall sleep
 
 The container terminates automatically because of `--rm`.
 
-> **Debugging tip:** You can inspect running containers from within using `docker exec`.
-> **Best practice:** Always include `/bin/sh` (or another shell) in development containers, even if stripped from production versions.
+> [!IMPORTANT]
+> You can inspect running containers from within using `docker exec`. This greatily simplifies debugging inside containers.
+>
+> As a **best practice** always include `/bin/sh` (or another shell) in development containers, even if stripped from production versions.
 
 ## 3.5. Docker networking brief
 
