@@ -47,7 +47,7 @@ Inside the New Namespace issue the `htop` command in the newly created namespace
   * You will observe that the `/bin/bash` process got assigned **PID=1**.
   * `htop` is displaying **only the processes** running in the current namespace (the new `bash` at PID 1, and `htop` itself).
 
-Back on the Host (Initial Namespace:
+To go back on the Host (Initial Namespace):
 
 1.  Open a **new terminal** (you are now back in the initial/host `PID` namespace).
 2.  Issue the `ps -af` command.
