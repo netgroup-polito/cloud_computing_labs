@@ -18,7 +18,7 @@ Modularity is a very important concept in Docker, as it keeps applications separ
 Create a new `apache` container:
 
 ```bash
-docker run -d --name dockerlab-apache --rm -p 8080:80 httpd:2.4-alpine
+sudo docker run -d --name dockerlab-apache --rm -p 8080:80 httpd:2.4-alpine
 ```
 
 **Explanation:**
@@ -48,7 +48,7 @@ Attach a shell to the running container and create a simple “Hello World” pa
 
 ```bash
 # Attach a shell to the running apache container
-docker exec -it dockerlab-apache /bin/sh
+sudo docker exec -it dockerlab-apache /bin/sh
 
 # Create a new main HTML file
 echo '<html><body><h1>Hello world!</h1></body></html>' > htdocs/index.html
@@ -68,7 +68,7 @@ A better solution involves mounting external files from the host.
 First, stop the container:
 
 ```bash
-docker container stop dockerlab-apache
+sudo docker container stop dockerlab-apache
 ```
 
 Then, prepare a local directory and HTML file:
@@ -81,7 +81,7 @@ echo '<html><body><h1>Hello world!</h1></body></html>' > docker-lab/apache/index
 Now, start the container again, using the `-v` flag to *bind mount* your local folder into the container:
 
 ```bash
-docker run -d --name dockerlab-apache --rm -p 8080:80 \
+sudo docker run -d --name dockerlab-apache --rm -p 8080:80 \
   -v ${PWD}/docker-lab/apache:/usr/local/apache2/htdocs:ro httpd:2.4-alpine
 ```
 
@@ -96,7 +96,7 @@ After refreshing the page, you can now update the served content simply by editi
 Finally, stop the container:
 
 ```bash
-docker container stop dockerlab-apache
+sudo docker container stop dockerlab-apache
 ```
 
 ## 4.4. Creating a User-Defined Bridge
@@ -105,7 +105,7 @@ Before connecting the web server and database, create a **user-defined bridge** 
 While the default bridge works, user-defined bridges allow **automatic DNS resolution** between containers.
 
 ```bash
-docker network create dockerlab-network
+sudo docker network create dockerlab-network
 ```
 
 ## 4.5. Running the Database Server
@@ -123,7 +123,7 @@ mkdir -p docker-lab/mariadb/{database,scripts}
 Then, run the container:
 
 ```bash
-docker run -d --name dockerlab-mariadb --rm --network dockerlab-network \
+sudo docker run -d --name dockerlab-mariadb --rm --network dockerlab-network \
   -e MYSQL_DATABASE=database -e MYSQL_ROOT_PASSWORD=rootpass \
   -e MYSQL_USER=testuser -e MYSQL_PASSWORD=testpass \
   -v ${PWD}/docker-lab/mariadb/database:/var/lib/mysql \
@@ -150,14 +150,14 @@ docker run -d --name dockerlab-mariadb --rm --network dockerlab-network \
 Check the setup by running a MySQL shell inside the container:
 
 ```bash
-docker exec -it dockerlab-mariadb \
+sudo docker exec -it dockerlab-mariadb \
   mysql --user=testuser --password=testpass --database=database
 ```
 
 If this fails, the server may still be initializing. Check logs with:
 
 ```bash
-docker logs --follow dockerlab-mariadb
+sudo docker logs --follow dockerlab-mariadb
 ```
 
 Once the prompt appears (`MariaDB [database]>`), try:
@@ -196,13 +196,13 @@ mkdir -p docker-lab/apache-php/docker
 Build the image:
 
 ```bash
-docker build --tag dockerlab-apache-php docker-lab/apache-php/docker
+sudo docker build --tag dockerlab-apache-php docker-lab/apache-php/docker
 ```
 
 Inspect build layers:
 
 ```bash
-docker history --no-trunc dockerlab-apache-php
+sudo docker history --no-trunc dockerlab-apache-php
 ```
 
 Now, create a PHP page that connects to the database (see `3C-PhpScript.sh`).
@@ -214,7 +214,7 @@ Now, create a PHP page that connects to the database (see `3C-PhpScript.sh`).
 Run the custom web server container:
 
 ```bash
-docker run -d --name dockerlab-apache-php --rm -p 8080:80 \
+sudo docker run -d --name dockerlab-apache-php --rm -p 8080:80 \
   -v ${PWD}/docker-lab/apache-php/html:/var/www/localhost/htdocs:ro \
   --network dockerlab-network dockerlab-apache-php
 ```
@@ -226,14 +226,14 @@ Visit [http://localhost:8080](http://localhost:8080) — you should see the tabl
 To share your image publicly, log in to Docker Hub:
 
 ```bash
-docker login
+sudo docker login
 ```
 
 Tag and push your image:
 
 ```bash
-docker tag dockerlab-apache-php <your-username>/dockerlab-apache-php:1.0-alpine
-docker push <your-username>/dockerlab-apache-php:1.0-alpine
+sudo docker tag dockerlab-apache-php <your-username>/dockerlab-apache-php:1.0-alpine
+sudo docker push <your-username>/dockerlab-apache-php:1.0-alpine
 ```
 
 > Image names follow the format:
@@ -244,7 +244,7 @@ docker push <your-username>/dockerlab-apache-php:1.0-alpine
 > Remember to log out after use if on a shared computer:
 >
 > ```bash
-> docker logout
+> sudo docker logout
 > ```
 
 ## 4.8. Cleaning Up the Environment
@@ -252,7 +252,7 @@ docker push <your-username>/dockerlab-apache-php:1.0-alpine
 Before moving on, stop all containers and remove the network:
 
 ```bash
-docker container stop dockerlab-apache-php
-docker container stop dockerlab-mariadb
-docker network rm dockerlab-network
+sudo docker container stop dockerlab-apache-php
+sudo docker container stop dockerlab-mariadb
+sudo docker network rm dockerlab-network
 ```
