@@ -33,7 +33,7 @@ Modifications performed in a container are not automatically reflected back to t
 ### 3.1.1. Run the Hello World container
 
 ```bash
-docker container run hello-world
+sudo docker container run hello-world
 ```
 
 Observe the output, which briefly describes the steps performed by Docker to run the container.
@@ -45,20 +45,20 @@ While VMs are **hardware abstractions** (requiring to boot a full operating syst
 ### 3.1.2. Common Docker commands
 
 ```bash
-docker image ls
+sudo docker image ls
 ```
 
 Shows all the images locally available. You should see only the `hello-world` image.
 
 ```bash
-docker container ls
+sudo docker container ls
 ```
 
 Shows the containers that are *currently* running.
 Since none are running, this should show nothing.
 
 ```bash
-docker container ls -a
+sudo docker container ls -a
 ```
 
 Lists *all* containers ever run, including stopped ones such as `hello-world` with the `Exited` status.
@@ -74,7 +74,7 @@ Lists *all* containers ever run, including stopped ones such as `hello-world` wi
 Remove a container by ID or name:
 
 ```bash
-docker container rm <container ID>
+sudo docker container rm <container ID>
 ```
 
 > [!NOTE]
@@ -85,9 +85,9 @@ After running this, `docker container ls -a` should return nothing, while the im
 To remove the image as well:
 
 ```bash
-docker rmi hello-world
+sudo docker rmi hello-world
 # or
-docker image rm hello-world
+sudo docker image rm hello-world
 ```
 
 ## 3.2. Starting an Alpine Linux container
@@ -98,13 +98,13 @@ For instance, the `alpine` image occupies less than **8 MB**, compared to **100 
 To fetch the image:
 
 ```bash
-docker image pull alpine:3.10
+sudo docker image pull alpine:3.10
 ```
 
 Then, to run it:
 
 ```bash
-docker container run alpine:3.10 echo "hello from alpine"
+sudo docker container run alpine:3.10 echo "hello from alpine"
 ```
 
 Docker creates a new container from the `alpine` image, runs the command, and then automatically stops the container.
@@ -116,7 +116,7 @@ Run a shell inside a new container instance, create a file, and inspect it:
 
 ```bash
 # Start the alpine container and run a shell
-docker container run -it alpine:3.10 /bin/sh
+sudo docker container run -it alpine:3.10 /bin/sh
 
 # Inside the container
 touch test-file
@@ -133,7 +133,7 @@ Without it, the shell would start and immediately terminate since no command was
 Now, create another container and list files:
 
 ```bash
-docker container run alpine:3.10 ls -l
+sudo docker container run alpine:3.10 ls -l
 ```
 
 **Question**: Is `test-file` present? Why?
@@ -143,7 +143,9 @@ docker container run alpine:3.10 ls -l
 To enforce CPU and memory limits:
 
 ```bash
-docker container run -it --cpus=1 --memory=$((100*1024*1024)) alpine:3.10 /bin/sh
+sudo docker container run -it --cpus=1 --memory=$((100*1024*1024)) alpine:3.10 /bin/sh
+
+# and now within the container
 apk add htop stress-ng
 ```
 
@@ -165,7 +167,7 @@ Sometimes it is necessary to attach a shell to a running container for debugging
 Start a long-running container:
 
 ```bash
-docker container run --name deadlock-app --rm --init alpine:3.10 sleep 1d
+sudo docker container run --name deadlock-app --rm --init alpine:3.10 sleep 1d
 ```
 
 * `--name`: assigns a name (`deadlock-app`)
@@ -176,7 +178,7 @@ docker container run --name deadlock-app --rm --init alpine:3.10 sleep 1d
 Open a **new terminal** and attach a shell:
 
 ```bash
-docker exec -it deadlock-app /bin/sh
+sudo docker exec -it deadlock-app /bin/sh
 ps -a
 killall sleep
 ```
