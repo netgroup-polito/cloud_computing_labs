@@ -7,23 +7,17 @@
 
 # 1. Physical Setup
 
-![Physical setup: how to connect to your virtualized resources.](images/lab-physical-setup.png)
-*Figure: Physical setup – how to connect to your virtualized resources.*
+For this lab, two possible configurations are possible:
 
-This laboratory requires a physical setup as shown in the figure above.
-Each student is provided with **two virtual machines (VMs)** running in the **POLITO datacenter**, accessible through the **[CrownLabs dashboard](https://crownlabs.polito.it)**. These VMs represent a **client** and a **server**.
+ - This lab requires a physical setup such as depicted in Figure 1. Each student will be provided with a couple of VMs running in the POLITO datacenter, accessible through the **Crownlabs dashboard**, which represents a **client** and a server.
+   
+   <p align="center">
+    <img src="./images/lab-physical-setup.png" alt="Physical setup: how to connect to your virtualized resources." width="80%">
+   </p>
+   <p align="center"><em>Figure 1: Physical setup — how to connect to your virtualized resources.</em></p>
 
-## 1.1. Client VM
+   A Linux (or equivalent) client, using the **"Cloud Client" template**, should be provisioned. This machine represents our **management host**, which is used to configure our (remote) server environment, the **Cloud Computing: Docker" laboratory template**.
 
-A Linux (or equivalent) client should be provisioned using the **“Cloud Client”** template.
-This machine acts as the **management host**, which you will use to configure the (remote) server environment for this lab — specifically, the **“Cloud Computing: Docker”** laboratory template.
+   On the **server** side, this lab operates with a single VM, where we can complete all our exercises.
 
-## 1.2. Server VM
-
-On the **server** side, the lab operates with a **single VM**.
-All exercises and Docker-related experiments are performed on this server machine.
-
-## 1.3. Alternative Access (SSH)
-
-If you have installed an **SSH key** on your local machine, it is possible to connect **directly** to the Server VM, bypassing the use of the Client VM.
-Please follow the instructions provided on the **CrownLabs website** (see the *Resources* section) for details on how to use this method.
+ - **PREFERRED**. Alternatively, if you created an **SSH key** on your local machine and copied it in the **Crownlabs dashboard**, you can directly connect through SSH to the Server VM (**Cloud Computing: Docker" laboratory template**), avoiding the use of the Client VM. Please follow the instructions on the CrownLabs website (section *Resources*) if you want to explore this method.
