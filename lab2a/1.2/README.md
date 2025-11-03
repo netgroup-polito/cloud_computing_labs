@@ -5,7 +5,7 @@
   </tr>
 </table>
 
-# 2. Traditional Filesystem Isolation (OPTIONAL)
+# 2. Traditional Filesystem Isolation
 
 ## 2.1. Introduction
 
