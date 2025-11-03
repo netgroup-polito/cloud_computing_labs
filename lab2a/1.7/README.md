@@ -22,9 +22,20 @@ You will need the tools provided by the `cgroup-tools` package.
 First, create a simple **bash script** that simulates a CPU-intensive task through an infinite loop:
 
 ```bash
+# Create a specific folder for cgroups experiments
+mkdir --parents docker-lab/cgroups
+
+# Create a script that endlessly consumes your CPU
+cat <<'EOF' > docker-lab/cgroups/infinite.sh
 #!/bin/bash
-# infinite.sh
-while true; do :; done
+i=0
+while true; do
+  i=$((i+1));
+done
+EOF
+
+# Change the permissions of the above file and make it executable
+chmod +x docker-lab/cgroups/infinite.sh
 ```
 
 ## 7.2. Running Multiple Processes Without cgroups
@@ -82,7 +93,7 @@ Here:
 
 These percentages are *relative* to each other. The default value of `cpu.shares` (1024) has no effect since we set explicit values.
 
-> ⚠️ **Note:**
+> [!NOTE]
 > Setting `cpu.shares` does **not** guarantee throttling to that percentage.
 > The kernel scheduler enforces these values **only when CPU contention exists** (i.e., multiple processes compete for the same core).
 
