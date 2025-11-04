@@ -178,12 +178,12 @@ Check the setup by running a MySQL shell inside the container:
 sudo docker exec -it dockerlab-mariadb \
   mysql --user=testuser --password=testpass --database=database
 ```
-
-If this fails, the server may still be initializing. Check logs with:
-
-```bash
-sudo docker logs --follow dockerlab-mariadb
-```
+> [!TIP]
+> If this fails, the server may still be initializing. Check logs with:
+>
+> ```bash
+> sudo docker logs --follow dockerlab-mariadb
+> ```
 
 Once the prompt appears (`MariaDB [database]>`), try:
 
