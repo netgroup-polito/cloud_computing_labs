@@ -121,7 +121,7 @@ sudo docker network create dockerlab-network
 
 Now, let’s run the `mariadb` container.
 
-Now run the following initialization script on your local system:
+Now run the following initialization script to create the appropriate tables for the DB on your local system:
 
 ```bash
 mkdir --parents docker-lab/mariadb/database
@@ -201,15 +201,34 @@ Although ready-to-use images exist (see [Docker Hub PHP](https://hub.docker.com/
 
 A **Dockerfile** is a text document containing all the commands to build an image automatically.
 
-Example setup (based on your `3B-Dockerfile.sh` snippet):
+Execute the following script to create all the required directoried and initialize the `Dockerfile`:
 
 ```bash
-# Directory structure
-mkdir -p docker-lab/apache-php/docker
-# Create your Dockerfile inside that directory
+# Create the required folders
+mkdir --parents docker-lab/apache-php/docker
+mkdir --parents docker-lab/apache-php/html
+
+# Now, let's create the Dockerfile to build our custom container
+cat <<'EOF' > docker-lab/apache-php/docker/Dockerfile
+FROM alpine:3.10
+
+# Run the command to install the required packages
+RUN apk add --update --no-cache apache2 php7-apache2 php7-mysqli
+
+# Allow graceful termination of apache
+# https://httpd.apache.org/docs/2.4/stopping.html#gracefulstop
+STOPSIGNAL WINCH
+
+# Expose the http port
+EXPOSE 80
+
+# Execute apache in foreground as default
+CMD ["/usr/sbin/httpd", "-DFOREGROUND"]
+EOF
+ 
 ```
 
-### 4.6.1. Common Dockerfile Instructions
+In the `Dockerfile` we can find the following constructs:
 
 * **FROM:** Specifies the base image.
 * **RUN:** Executes commands to build image layers (e.g., install packages).
@@ -230,7 +249,53 @@ Inspect build layers:
 sudo docker history --no-trunc dockerlab-apache-php
 ```
 
-Now, create a PHP page that connects to the database (see `3C-PhpScript.sh`).
+Now, create a PHP page that connects to the mariadb database previously created.
+
+```bash
+cat <<'EOF' > docker-lab/apache-php/html/index.php
+<?php
+$server = "dockerlab-mariadb";
+$username = "testuser";
+$password = "testpass";
+$database = "database";
+
+$connection = new mysqli($server, $username, $password, $database);
+if ($connection->connect_error) {
+   die("Connection failed: " . $connection->connect_error);
+}
+
+$query = "SELECT * FROM DOCKER_IMAGES";
+$result = $connection->query($query);
+
+echo "<center><table border='1' cellpadding='10'>";
+echo "<tr><th>Name</th><th>Version</th></tr>";
+while ($row = $result->fetch_assoc()) {
+    echo "<tr><td>" . $row["NAME"] . "</td>";
+    echo "<td>" . $row["VERSION"] ."</td></tr>";
+}
+echo "</table></center>";
+?>
+EOF
+```
+
+The PHP script connects to the `mariadb` database using the `mysqli` extension. It retrieves the contents of the `DOCKER_IMAGES` table and dynamically generates an HTML table to display the data. Here's a breakdown of the script:
+
+1. **Database Connection:**  
+  The script establishes a connection to the `mariadb` container using the hostname `dockerlab-mariadb`, along with the username, password, and database name defined earlier.
+
+2. **Error Handling:**  
+  If the connection fails, the script terminates and displays an error message.
+
+3. **Query Execution:**  
+  The script executes a SQL query (`SELECT * FROM DOCKER_IMAGES`) to fetch all rows from the `DOCKER_IMAGES` table.
+
+4. **HTML Table Generation:**  
+  The script iterates over the query results and constructs an HTML table with two columns: `Name` and `Version`. Each row in the database corresponds to a row in the HTML table.
+
+5. **Output:**  
+  The generated HTML table is displayed in the browser when the `index.php` page is accessed.
+
+This script demonstrates how to integrate PHP with a MySQL database to create dynamic web content.
 
 > [!NOTE]
 > The PHP script refers to the database server by **container name** (`dockerlab-mariadb`) instead of IP address.
