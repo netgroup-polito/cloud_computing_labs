@@ -18,8 +18,8 @@ To simplify container lifecycle management, several **orchestrators** have been 
 
 In this section, you will experiment with **Docker Compose**.
 
-> **Official definition:**
-> “Compose is a tool for defining and running multi-container Docker applications.
+> [!NOTE]
+> The offial definition says: “Compose is a tool for defining and running multi-container Docker applications.
 > With Compose, you use a YAML file to configure your application's services.
 > Then, with a single command, you create and start all the services from your configuration.”
 
@@ -31,7 +31,6 @@ Swarm and Kubernetes, instead, are designed for **clusters** that can include th
 Create a new file called `docker-compose.yml` to replicate the same setup you manually created in the previous section.
 
 ```yaml
-# Example docker-compose.yml (see snippet 3D-DockerCompose.sh)
 version: "3.7"
 
 services:
@@ -61,11 +60,6 @@ networks:
   dockerlab-network:
 ```
 
-> [!WARNING]
-> YAML files rely heavily on **indentation** for structure.
-> Do *not* copy directly from a PDF file — it will likely break indentation.
-> Always double-check your layout using a text editor such as `nano docker-compose.yml` or `vim docker-compose.yml`.
-
 The file defines the containers (services) to be started, along with:
 
 * The image or Dockerfile to use
@@ -82,8 +76,8 @@ Once your `docker-compose.yml` file is ready, you can start and stop the full st
 
 ```bash
 # Start the containers defined in docker-compose.yml (in background)
-docker-compose up -d
+sudo docker-compose up -d
 
 # Stop the running containers
-docker-compose stop
+sudo docker-compose stop
 ```
