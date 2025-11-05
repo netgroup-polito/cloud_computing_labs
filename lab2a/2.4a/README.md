@@ -6,7 +6,7 @@
 </table>
 
 
-# 5. Mount (MNT) Namespaces
+# 4. Mount (MNT) Namespaces
 
 *Slightly adapting the introduction provided by [LWN.net](https://lwn.net/Articles/689856/):*
 
@@ -18,7 +18,7 @@ Then, new `MNT` namespaces can be created, with a copy of the mount point list r
 Finally, mount points can be independently added and removed in each namespace.
 Changes to the mount point list are by default visible only to processes in the mount namespace where the process resides: they are **not visible** in other mount namespaces.
 
-## 5.1. Running a Shell in a New Mount Namespace
+## 4.1. Running a Shell in a New Mount Namespace
 
 In the following, you will be required to run a `bash` shell in a new `MNT` namespace.
 Then, you will modify some of the mount points and verify that they are independent from the ones present in the initial namespace.
@@ -29,7 +29,7 @@ To begin, use the `unshare` utility with the `--mount` flag to create a new `MNT
 sudo unshare --mount /bin/bash
 ```
 
-## 5.2. Observing the Mount Points
+## 4.2. Observing the Mount Points
 
 Now, let's create a new mount point:
 
@@ -48,7 +48,7 @@ tree /mnt
 
 you will see the directory structure you created previously.
 
-## 5.3. Creating a Test File
+## 4.3. Creating a Test File
 
 Now create a new file in the new mount point, named `/mnt/testns.txt`:
 
@@ -58,7 +58,7 @@ echo "This is a test file created within the new mount namespace" > /mnt/testns.
 
 You can verify that it is reflected back to the `docker-lab/tmpfs/` folder.
 
-## 5.4. Verifying Namespace Isolation
+## 4.4. Verifying Namespace Isolation
 
 To verify the isolation between different `MNT` namespaces, open a **new terminal** (thus, back to the original `MNT` namespace) and follow the steps below:
 
@@ -73,7 +73,7 @@ To verify the isolation between different `MNT` namespaces, open a **new termina
   Is there any difference between the two outputs?
   *Tip: try to identify the mount point you created previously (having target `/mnt`).*
 
-## 5.7. Exiting the Namespace
+## 4.7. Exiting the Namespace
 
 Before moving on to the next section of the laboratory, exit from the `MNT` namespace:
 
@@ -82,7 +82,7 @@ exit
 ```
 
 
-## 5.6. Typical Use of MNT Namespaces (OPTIONAL)
+## 4.6. Typical Use of MNT Namespaces (OPTIONAL)
 
 In a typical scenario, `MNT` namespaces would be used **in combination with `chroot`** to “customize” the filesystem view seen by a process. Its purpose is to change the apparent **root directory** (i.e., `/`) for one process and its children. Thus, a program executed in such a modified environment cannot see and access files outside the designated directory tree, effectively creating a sort of ***jail***.
 
@@ -99,7 +99,7 @@ Generally speaking, a `chroot` environment can be exploited to create and host a
 
 In the following, you will be guided along the execution of a `bash` shell within a `chroot` environment, to verify the provided level of isolation.
 
-### 5.6.1 Setting up the `chroot` Environment
+### 4.6.1 Setting up the `chroot` Environment
 
 To begin, let's create the directory that will be mounted as `/` in the `chroot` environment:
 
@@ -135,7 +135,7 @@ for LIB in $(ldd /bin/bash | grep --only-matching --perl-regexp '/.*(?= \(0x)');
 
 Finally, observe the content of the `chroot` directory by typing `tree docker-lab/chroot` (or, if you prefer, `ls -l --recursive docker-lab/chroot`).
 
-### 5.6.2. Entering the `chroot` Jail
+### 4.6.2. Entering the `chroot` Jail
 
 Now, you are ready to create the `chroot` environment with the following command:
 
@@ -157,7 +157,7 @@ If the `chroot` command succeeds, your `bash` prompt should have changed to `bas
 > [!NOTE] 
 > Prompt `bash-x.y#` is the default one used by `bash` in case no customized directives for the prompt are available in the user's home folder.
 
-### 5.6.3. Experimenting in the Jail
+### 4.6.3. Experimenting in the Jail
 
 Now, it is possible to perform some simple experiments from within the `chroot` jail. However, please notice that only `bash` and its built-in commands can be invoked, while any other command (e.g., `ls`) will fail with a `command not found` error, since the corresponding executable is not present within the jail.
 

@@ -5,11 +5,11 @@
   </tr>
 </table>
 
-# 4. Process ID Namespaces
+# 3. Process ID Namespaces
 
 As a first example of namespaces, let's experiment with the creation of a **Process ID (`PID`) namespace**.
 
-## 4.1. Concept
+## 3.1. Concept
 
 In Linux, processes originate a single process tree, with the root being the **`init` process** (PID=1), which is in charge of special tasks (e.g., all orphaned processes are attached to it).
 
@@ -20,7 +20,7 @@ In Linux, processes originate a single process tree, with the root being the **`
 3.  PID namespaces are **nested**. A process has a PID for each namespace from its current one up to the initial (host) namespace.
 4.  The initial (host) PID namespace is the only one able to **see all processes** across all nested namespaces.
 
-## 4.2. Experiment: Creating a New PID Namespace
+## 3.2. Experiment: Creating a New PID Namespace
 
 You will use the `unshare` utility, which allows you to run a program with some namespaces unshared from its parent.
 
@@ -40,7 +40,7 @@ Where the flags mean:
 > [!NOTE]
 > In case you get the error *bash: /root/.bashrc: Permission denied*, you can safely ignore it (or append the `-norc` flag to the `bash` invocation to remove the message).
 
-## 4.3. Observation and Verification
+## 3.3. Observation and Verification
 
 Inside the New Namespace issue the `htop` command in the newly created namespace:
 

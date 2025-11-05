@@ -5,7 +5,7 @@
   </tr>
 </table>
 
-# 7. Linux cgroups: Defining Maximum CPU Consumption
+# 6. Linux cgroups: Defining Maximum CPU Consumption
 
 **Linux cgroups** (control groups) represent the second building block necessary to implement lightweight virtualization.
 Essentially, cgroups are a Linux kernel feature providing fine-grained control to limit, account, isolate, or deny resource usage to a process or a group of processes.
@@ -17,7 +17,7 @@ You will need the tools provided by the `cgroup-tools` package.
 > Linux includes cgroups in all recent kernels; however, the userspace tools required to control them are not installed by default.
 > If you encounter issues, refer to the installation instructions in the relevant section.
 
-## 7.1. Simulating a CPU-Intensive Task
+## 6.1. Simulating a CPU-Intensive Task
 
 First, create a simple **bash script** that simulates a CPU-intensive task through an infinite loop:
 
@@ -38,7 +38,7 @@ EOF
 chmod +x docker-lab/cgroups/infinite.sh
 ```
 
-## 7.2. Running Multiple Processes Without cgroups
+## 6.2. Running Multiple Processes Without cgroups
 
 To check the default behavior when cgroups are not configured, execute the `infinite.sh` script three times, passing a different parameter to each one to make them distinguishable during monitoring.
 
@@ -64,11 +64,11 @@ Before proceeding, stop the running processes:
 pkill --full "infinite.sh"
 ```
 
-## 7.3. Running Multiple Processes With cgroups
+## 6.3. Running Multiple Processes With cgroups
 
 Now let’s use **cgroups** to control CPU usage more precisely.
 
-### 7.3.1. Create the cgroups
+### 6.3.1. Create the cgroups
 
 Create two new ad-hoc CPU cgroups, named `throttle25` and `throttle75`:
 
@@ -77,7 +77,7 @@ sudo cgcreate -a "$USER" -t "$USER" -g cpu:/throttle25
 sudo cgcreate -a "$USER" -t "$USER" -g cpu:/throttle75
 ```
 
-### 7.3.2. Configure CPU Shares
+### 6.3.2. Configure CPU Shares
 
 Assign different CPU shares to each group:
 
@@ -97,7 +97,7 @@ These percentages are *relative* to each other. The default value of `cpu.shares
 > Setting `cpu.shares` does **not** guarantee throttling to that percentage.
 > The kernel scheduler enforces these values **only when CPU contention exists** (i.e., multiple processes compete for the same core).
 
-### 7.3.3 Run Processes in cgroups
+### 6.3.3 Run Processes in cgroups
 
 Now execute the scripts again using `cgexec` to assign each process to a specific cgroup:
 
@@ -118,7 +118,7 @@ You should now observe **uneven CPU distribution**:
 * The process in `throttle75` uses ~75% of the CPU core.
 * The other two processes (in `throttle25`) share the remaining ~25%.
 
-## 7.4. Setting Hard CPU Limits
+## 6.4. Setting Hard CPU Limits
 
 In addition to relative shares, you can configure **hard CPU usage limits** using the following parameters:
 
@@ -136,7 +136,7 @@ Experiment with these parameters to understand their effects.
 
 ---
 
-## 7.5. Cleaning Up
+## 6.5. Cleaning Up
 
 Before moving to the next part of the lab, stop all running processes and delete the created cgroups:
 

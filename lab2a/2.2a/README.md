@@ -5,7 +5,7 @@
   </tr>
 </table>
 
-# 3. Linux Namespaces
+# 2. Linux Namespaces
 
 Quoting Wikipedia, "The **Linux namespaces** are a feature of the Linux kernel that partitions kernel resources such that one set of processes sees one set of resources while another set of processes sees a different set of resources."
 

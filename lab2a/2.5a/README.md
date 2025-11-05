@@ -5,7 +5,7 @@
   </tr>
 </table>
 
-# 6. Network Namespaces: Exchanging Traffic Between Multiple Namespaces and the Host
+# 5. Network Namespaces: Exchanging Traffic Between Multiple Namespaces and the Host
 
 A **`NET` namespace** allows two processes to perceive completely different and independent network setups.
 In other words, each `NET` namespace has its own set of IP addresses, its own routing table, firewall rules, and so on — even the loopback interface is separate.
@@ -15,7 +15,7 @@ Afterward, it is possible to attach either physical or virtual interfaces to the
 
 ![Playing with network namespaces: logical setup.](images/lab-netns1.png)
 
-## 6.1. Creating the First Network Namespace
+## 5.1. Creating the First Network Namespace
 
 In the following, you will create two `NET` namespaces, interconnect them, and configure them to communicate with each other, achieving the topology shown above.
 
@@ -50,7 +50,7 @@ You should only see the `lo` (loopback) interface, with state `DOWN`.
 
 ---
 
-## 6.2. Enabling the Loopback Interface
+## 5.2. Enabling the Loopback Interface
 
 Let’s enable the loopback interface and verify it works with a ping to `localhost` within the namespace:
 
@@ -64,7 +64,7 @@ sudo ip netns exec ns1 ping 127.0.0.1
 
 ---
 
-## 6.3. Connecting the Namespace to the Root Namespace
+## 5.3. Connecting the Namespace to the Root Namespace
 
 Now, we need to connect the `ns1` namespace to the **root namespace**.
 To do this, we create a **Virtual Ethernet Device (`veth`)**, which acts as a virtual wire with two ends, each attached to a different namespace.
@@ -86,11 +86,11 @@ Alternatively, the entire operation can be done in a single command:
 sudo ip link add veth0-root type veth peer name veth0-ns1 netns ns1
 ```
 
-## 6.4. Assigning IP Addresses
+## 5.4. Assigning IP Addresses
 
 Once the `veth` is created, assign IP addresses to both ends and verify connectivity.
 
-### 6.4.1. Namespace side
+### 5.4.1. Namespace side
 
 ```bash
 # veth0-ns1 configuration (ns1 namespace)
@@ -108,7 +108,7 @@ ping 10.255.1.2
 sudo ip netns exec ns1 ping 10.255.1.2
 ```
 
-### 6.4.2. Root namespace side
+### 5.4.2. Root namespace side
 
 ```bash
 # veth0-root configuration (root namespace)
@@ -131,7 +131,7 @@ If both pings succeed, you have successfully created IP connectivity between `ns
 
 ---
 
-## 6.5. Adding a Second Namespace and Enabling IP Forwarding
+## 5.5. Adding a Second Namespace and Enabling IP Forwarding
 
 Now, repeat the previous steps to create a second namespace (`ns2`), a new `veth` pair, and configure the IP addresses.
 
@@ -149,7 +149,7 @@ sudo iptables -P FORWARD ACCEPT
 
 ---
 
-### 6.5.1. Testing Connectivity
+### 5.5.1. Testing Connectivity
 
 When trying to ping from one namespace to the other, you will notice they are not reachable:
 
@@ -186,7 +186,7 @@ sudo ip netns exec ns1 ping 10.255.2.2
 ```
 
 
-## 6.6. Full Configuration Script
+## 5.6. Full Configuration Script
 
 If you encounter problems, use this script snippet that sets everything up automatically:
 
@@ -220,7 +220,7 @@ Once configured, the two namespaces should be able to ping each other successful
 
 ---
 
-## 6.7. Cleaning Up
+## 5.7. Cleaning Up
 
 Before moving on, clean up the environment:
 
