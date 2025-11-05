@@ -52,8 +52,8 @@ When they share a namespace, they share interfaces and port bindings — so two 
 ### 6.2.1. Example
 
 ```bash
-docker container run -d --name=nginx nginx:1.23
-docker container run -it --network=container:nginx alpine:3.10
+sudo docker container run -d --name=nginx nginx:1.23
+sudo docker container run -it --network=container:nginx alpine:3.10
 ```
 
 Here, the second container joins the **network namespace** of `nginx`.
@@ -131,8 +131,8 @@ ENTRYPOINT ["interface-lister"]
 After building:
 
 ```bash
-docker build -t interface-lister:0.1 .
-docker image ls
+sudo docker build -t interface-lister:0.1 .
+sudo docker image ls
 ```
 
 Output:
@@ -164,7 +164,7 @@ Internally, Kubernetes uses a lightweight **pause container** to provide a share
 Start the pause container:
 
 ```bash
-docker run -d --ipc=shareable --name pause -p 8080:80 \
+sudo docker run -d --ipc=shareable --name pause -p 8080:80 \
     gcr.io/google_containers/pause-amd64:3.0
 ```
 
@@ -185,10 +185,10 @@ http {
 ### 6.5.2. Containers
 
 ```bash
-docker run -d --name nginx -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro \
+sudo docker run -d --name nginx -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro \
     --net=container:pause --ipc=container:pause nginx:1.23
 
-docker run -d --name ghost -e NODE_ENV=development \
+sudo docker run -d --name ghost -e NODE_ENV=development \
     --net=container:pause --ipc=container:pause ghost:5.22
 ```
 
@@ -210,14 +210,14 @@ Normally, the `init` process (PID 1) adopts or reaps orphaned processes to preve
 To demonstrate the zombie process issue, run two containers sharing a single **PID namespace**.
 
 ```bash
-docker run -d --name sleep --ipc=shareable alpine:3.10 sleep 1d
-docker run -d --name nginx --ipc=container:sleep --pid=container:sleep nginx:1.23
+sudo docker run -d --name sleep --ipc=shareable alpine:3.10 sleep 1d
+sudo docker run -d --name nginx --ipc=container:sleep --pid=container:sleep nginx:1.23
 ```
 
 Then, inspect the processes:
 
 ```bash
-docker exec -it sleep /bin/sh
+sudo docker exec -it sleep /bin/sh
 ps -o pid,ppid,stat,args
 ```
 
