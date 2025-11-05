@@ -344,5 +344,4 @@ Before moving on, stop all containers and remove the network:
 ```bash
 sudo docker container stop dockerlab-apache-php
 sudo docker container stop dockerlab-mariadb
-sudo docker network rm dockerlab-network
 ```
