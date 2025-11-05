@@ -113,6 +113,10 @@ int main() {
 }
 ```
 
+> [!NOTE]
+> This C program uses the libpcap library to discover and display all network interfaces available on the system that can be used for packet capturing.
+> In essence, it enumerates the network capture devices recognized by libpcap.
+
 ### 6.3.1. Multi-stage Dockerfile
 
 ```dockerfile
