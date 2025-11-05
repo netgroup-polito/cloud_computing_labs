@@ -39,14 +39,7 @@ sudo mkdir --parents /mnt
 sudo mount --bind docker-lab/tmpfs/ /mnt/
 ```
 
-Here, the `mount` command **remounts** (notice the `--bind` flag) the `docker-lab/tmpfs/` directory and all its subdirectories — the ones you created in the previous section — with target `/mnt`.
-Hence, if you now type:
-
-```bash
-tree /mnt
-```
-
-you will see the directory structure you created previously.
+Here, the `mount` command **remounts** (notice the `--bind` flag) the `docker-lab/tmpfs/` directory and all its subdirectories with target `/mnt`.
 
 ## 4.3. Creating a Test File
 
