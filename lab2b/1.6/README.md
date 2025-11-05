@@ -153,67 +153,17 @@ interface-lister    0.1           098dc03a096a   106MB
 
 As seen, the final image is **ten times smaller** than the build stage image.
 
-## 6.4. Building a Container Runtime from Scratch in Go
-
-A great way to understand Docker internals is to build a minimal container engine yourself.
-In [this tutorial by Liz Rice](https://www.youtube.com/watch?v=Utf-A4rODH8), you can follow how to implement a simple container runtime in Go.
-
-No prior Go knowledge is required — the tutorial explains each step in detail, showing how Docker interacts with Linux kernel primitives.
-
-## 6.5. From Simple Containers to Pods
-
-This exercise demonstrates the path from **single containers** to **Kubernetes Pods**.
-
-Kubernetes Pods are groups of containers that share some **namespaces and resources** (e.g., network, IPC).
-Internally, Kubernetes uses a lightweight **pause container** to provide a shared environment.
-
-### 6.5.1. Example
-
-Start the pause container:
-
-```bash
-sudo docker run -d --ipc=shareable --name pause -p 8080:80 \
-    gcr.io/google_containers/pause-amd64:3.0
-```
-
-Then, run an **Nginx proxy** and a **Ghost blog** container, both sharing the pause container’s namespaces.
-
-```nginx
-events {}
-http {
-  server {
-    listen 80;
-    location / {
-      proxy_pass http://localhost:2368;
-    }
-  }
-}
-```
-
-### 6.5.2. Containers
-
-```bash
-sudo docker run -d --name nginx -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro \
-    --net=container:pause --ipc=container:pause nginx:1.23
-
-sudo docker run -d --name ghost -e NODE_ENV=development \
-    --net=container:pause --ipc=container:pause ghost:5.22
-```
-
-Now visit [http://localhost:8080](http://localhost:8080) —
-you should see the Ghost blog served through Nginx.
-
-## 6.6. PIDs in Linux
+## 6.5. PIDs in Linux
 
 In Linux, processes form a **tree structure**. Each process has a **Parent Process ID (PPID)**, except for `init` (PID 1).
 Processes can spawn new ones via the `fork` syscall, and replace themselves via `exec`.
 
-### 6.6.1. Zombie Processes
+### 6.5.1. Zombie Processes
 
 A **zombie** is a process that has terminated but still exists in the process table because its parent has not collected its exit status using the `wait` syscall.
 Normally, the `init` process (PID 1) adopts or reaps orphaned processes to prevent PID exhaustion.
 
-## 6.7. The Problem of Zombies in Containers
+## 6.6. The Problem of Zombies in Containers
 
 To demonstrate the zombie process issue, run two containers sharing a single **PID namespace**.
 
