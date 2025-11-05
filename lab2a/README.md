@@ -14,16 +14,14 @@ You will experiment with some of these techniques, namely **namespaces** and **c
 
 ## Table of contents 
 
-[Chapter 1 - Physical setup](./1.1/README.md)
+[Chapter 1 - Physical setup](./2.1a/README.md)
 
-[Chapter 2 - Traditional Filesystem Isolation](./1.2/README.md)
+[Chapter 2 - Linux Namespaces](./2.2a/README.md)
 
-[Chapter 3 - Linux Namespaces](./1.3/README.md)
+[Chapter 3 - Process ID Namespaces](./2.3a/README.md)
 
-[Chapter 4 - Process ID Namespaces](./1.4/README.md)
+[Chapter 4 - Mount (MNT) Namespaces](./2.4a/README.md)
 
-[Chapter 5 - Mount (MNT) Namespaces](./1.5/README.md)
+[Chapter 5 - Network Namespaces](./2.5a/README.md)
 
-[Chapter 6 - Network Namespaces](./1.6/README.md)
-
-[Chapter 7 - Linux cgroups](./1.7/README.md)
+[Chapter 6 - Linux cgroups](./2.6a/README.md)
