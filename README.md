@@ -23,7 +23,7 @@
 <table>
   <tr>
     <td><img src="./images/openstack.png" alt="Exercise1 Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
-    <td><a href="./exercise1/openstack/README.md"><b>Exercise1 - Setting up OpenStack and creating VM-based services </b></a></td>
+    <td><a href="./exercise1/README.md"><b>Exercise1 - Setting up OpenStack and creating VM-based services </b></a></td>
   </tr>
 </table>
 
