@@ -12,8 +12,7 @@ Since OpenStack requires non negliglible skills to be installed and careful plan
 
 The setup involves two hosts:
 
--   **A first VM, hosting OpenStack**. This VM, running on CrownLabs, is based on Ubuntu 22.04 LTS and named `Ubuntu 22.04 - CloudVM`.
-    This VM is based on a cloud image, hence it includes the most common tools required for a production-grade server-based environment.
+-   **A first VM, hosting OpenStack**. On CrownLabs, we suggest the `Ubuntu 22.04 - CloudVM` VM, which is based on a cloud image running Ubuntu 22.04 LTS, hence it includes the most common tools required for a production-grade server-based environment.
     In Crownlabs, it has been configured to be *persistent* and console-only (hence, no GUI).
     This VM will host your DevStack environment.
 
@@ -58,30 +57,16 @@ However, you have to pay attention to the following issues.
 
         This is your host IP address: 172.16.183.136
 
-    To connect to the OpenStack VM from the management VM, **you have to
-    use this IP address** (i.e., the one shown at the end of the
-    installation) and not the one reported in the CrownLabs dashboard,
-    which usually is in the `10.0.0.0/8` range. In case you missed the
-    above message, you can connect via SSH to the OpenStack VM and type
-    the command `ip addr`, which shows the real IP address of the VM.
+    To connect to the OpenStack VM from the management VM, **you have to use this IP address** (i.e., the one shown at the end of the installation) and not the one reported in the CrownLabs dashboard, which usually is in the `10.0.0.0/8` range.
+    In case you missed the above message, you can connect via SSH to the OpenStack VM and type the command `ip addr`, which shows the real IP address of the VM.
     Take note of that address, and use it to connect from the second VM.
 
--   **Enable DHCP on the public network**. OpenStack comes with two
-    logical networks already configured, which are visible by entering
-    in the OpenStack dashboard with the admin user (and the password you
-    set during the installation process), then selecting "Project",
-    "Network", and "Network Topology". The *public* network is the one
-    that allows VMs running in OpenStack to connect to the Internet but,
-    by default, the DHCP service is disabled on that network. Use the
-    OpenStack dashboard to edit the properties of that network and
-    enable the DHCP service *before* creating any VM.
+-   **Enable DHCP on the public network**. OpenStack comes with two already configured logical networks, which are visible by entering in the OpenStack dashboard with the admin user (and the password yoy set during the installation process), then selecting "Project", "Network", and "Network Topology".
+    The *public* network is the one that allows VMs running in OpenStack to connect to the Internet but, by default, the DHCP service is disabled on that network.
+    Use the OpenStack dashboard to edit the properties of that network and enable the DHCP service *before* creating any VM.
 
--   **Cannot stop and relaunch OpenStack**. The DevStack installation of
-    OpenStack works in a \"fire and forget\" fashion. If you reboot your
-    machine, the installaiton will no longer work and you have to
-    reinstall it from scratch, starting from a fresh *operating system*
-    image. If you want to install OpenStack again on the same VM, you
-    have to type the above commands:
+-   **Cannot stop and relaunch OpenStack**. The DevStack installation of  OpenStack works in a \"fire and forget\" fashion. If you reboot your  machine, the installation will no longer work and you have to reinstall it from scratch, starting from a fresh *operating system* image.
+    If you want to install OpenStack again on the same VM, you have to type the above commands:
 
         # Uninstall OpenStack
         ./unstack.sh
@@ -92,4 +77,4 @@ However, you have to pay attention to the following issues.
         # Restart the installation script from scratch
         ./stack.sh
 
-The OpenStack install is now ready for you to play and to deliver what the assignment (on Moodle) asks you for.
+The OpenStack install is now ready for you to play.
