@@ -17,70 +17,44 @@ The setup involves two hosts:
     In Crownlabs, it has been configured to be *persistent* and console-only (hence, no GUI).
     This VM will host your DevStack environment.
 
--   **A second VM, hosting a management workstation**. This VM, running
-    on CrownLabs, provides GUI-based access to the previous one, such as
-    the `Cloud Computing: Client VM` instance.
+-   **A second VM, hosting a management workstation**. This VM, running on CrownLabs, provides GUI-based access to the previous one, such as the `Cloud Computing: Client VM` instance.
 
-**Note**: although the second VM seems avoidable, potentially being
-replaced by an SSH connection from the student's computer to the
-DevStack VM, we suggest to use it because of the necessity to use a web
-browser to interact with the DevStack machine. In fact, the interaction
-with OpenStack is web-based and may rely also on non-standard TCP ports
-when the console of running VMs is opened, which may be difficult to
-handle through an SSH connection.
+**Note**: although the second VM seems avoidable, potentially being replaced by an SSH connection from the student's computer to the DevStack VM, we suggest to use it because of the necessity to use a web browser to interact with the DevStack machine. In fact, the interaction with OpenStack is web-based and may rely also on non-standard TCP ports when the console of running VMs is opened, which may be difficult to handle through an SSH connection.
 
 # Installing OpenStack
 
-The installation of OpenStack is rather simple, by opening a
-console-based connection to the DevStack VM and following the
-instructions on the DevStack website:
-<https://docs.openstack.org/devstack/latest/>.
+The installation of OpenStack is rather simple, by opening a console-based connection to the DevStack VM and following the instructions on the DevStack website:
 
-**Note**: the installation process usually lasts between 30 and 60
-minutes, depending on the characteristics of your VM.
+<https://docs.openstack.org/devstack/latest/>
+
+**Note**: the installation process usually takes between 30 and 60 minutes, depending on the characteristics of your VM.
 
 ## Install on a custom VM (not on CrownLabs)
 
-For completeness, we report here some hints in case the student would
-prefer to install DevStack on its own computer, e.g., on a VM running
-locally:
+For completeness, we report here some hints in case you would prefer to install DevStack on your own computer, e.g., on a VM running locally:
 
--   **Use a cloud image**. Do not start from a vanilla Linux OS; choose
-    a cloud image available here, preferably a recent LTS version:
-    <https://cloud-images.ubuntu.com/>
+-   **Use a cloud image**. Do not start from a vanilla Linux OS; choose a cloud image available here, preferably a recent LTS version: <https://cloud-images.ubuntu.com/>
 
--   **Resize the image disk**. Cloud images have usually rather small
-    disk size. Before running the cloud image, resize its disk to be at
-    least 20GB. For example, if you are using KVM, you can type the
-    following command
-    `qemu-img resize ubuntu-22.04-server-cloudimg-amd64.img +15G`. This
-    increases the disk size of the
-    `ubuntu-22.04-server-cloudimg-amd64.img` image of additional 15GB.
+-   **Resize the image disk**. Cloud images have usually rather small disk size.
+    Before running the cloud image, resize its disk to be at least 20GB.
+    For example, if you are using KVM, you can type the following command:
+    
+        qemu-img resize ubuntu-22.04-server-cloudimg-amd64.img +15G
 
--   **Install git**. DevStack requires `git` to be installed. If not
-    already present on the VM image, you can install it with
-    `apt install -y git` (on Ubuntu).
+    This increases the disk size of the `ubuntu-22.04-server-cloudimg-amd64.img` image of additional 15GB.
 
--   **Assign enough resources to the VM**. We suggest at least 2 CPU
-    cores, 6 GB RAM, but better if you have more, e.g., to avoid the
-    installation stopping without any meaningful message because of lack
-    of memory or disk full.
+-   **Install git**. DevStack requires `git` to be installed. If not already present on the VM image, you can install it (on Ubuntu) with `apt install -y git`.
 
-**Note**: in case you are not able to clone the DevStack git repository
-because of a failure in the server certificate verification, which is
-one of the first commands in the DevStack setup, re-start the
-`git clone` command with the `-c http.sslVerify=false` flag (e.g.,
-`git -c http.sslVerify=false clone <path>`).
+-   **Assign enough resources to the VM**. We suggest at least 2 CPU cores, 6 GB RAM, but better if you have more, e.g., to avoid the installation stopping without any meaningful message because of lack of memory or disk full.
+
+**Note**: in case you are not able to clone the DevStack git repository because of a failure in the server certificate verification, which is one of the first commands in the DevStack setup, re-start the `git clone` command with the `-c http.sslVerify=false` flag (e.g., `git -c http.sslVerify=false clone <path>`).
 
 ## Configuring and playing with OpenStack
 
-Once the setup is completed, you can connect to your OpenStack instance
-through a web browser executed on the second VM. However, you have to
-pay attention to the following issues.
+Once the setup is completed, you can connect to your OpenStack instance through a web browser executed on the second VM.
+However, you have to pay attention to the following issues.
 
--   **IP address of the OpenStack VM**. When the DevStack script
-    finishes, one of the messages shown on screen looks like the
-    following:
+-   **IP address of the OpenStack VM**. When the DevStack script finishes, one of the messages shown on screen looks like the following:
 
         This is your host IP address: 172.16.183.136
 
@@ -118,5 +92,4 @@ pay attention to the following issues.
         # Restart the installation script from scratch
         ./stack.sh
 
-The OpenStack install is now ready for you to play and to deliver what
-the assignment (on Moodle) asks you for.
+The OpenStack install is now ready for you to play and to deliver what the assignment (on Moodle) asks you for.
