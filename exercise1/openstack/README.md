@@ -18,7 +18,8 @@ The setup involves two hosts:
 
 -   **A second VM, hosting a management workstation**. This VM, running on CrownLabs, provides GUI-based access to the previous one, such as the `Cloud Computing: Client VM` instance.
 
-**Note**: although the second VM seems avoidable, potentially being replaced by an SSH connection from the student's computer to the DevStack VM, we suggest to use it because of the necessity to use a web browser to interact with the DevStack machine. In fact, the interaction with OpenStack is web-based and may rely also on non-standard TCP ports when the console of running VMs is opened, which may be difficult to handle through an SSH connection.
+> [!NOTE] 
+> although the second VM seems avoidable, potentially being replaced by an SSH connection from the student's computer to the DevStack VM, we suggest to use it because of the necessity to use a web browser to interact with the DevStack machine. In fact, the interaction with OpenStack is web-based and may rely also on non-standard TCP ports when the console of running VMs is opened, which may be difficult to handle through an SSH connection.
 
 # Installing OpenStack
 
@@ -67,14 +68,14 @@ However, you have to pay attention to the following issues.
 
 -   **Cannot stop and relaunch OpenStack**. The DevStack installation of  OpenStack works in a \"fire and forget\" fashion. If you reboot your  machine, the installation will no longer work and you have to reinstall it from scratch, starting from a fresh *operating system* image.
     If you want to install OpenStack again on the same VM, you have to type the above commands:
-
-        # Uninstall OpenStack
-        ./unstack.sh
-        # Clean all. Note: the source files (i.e., the result of the git clone command) are
-        # not deleted, hence you may not need to clone the repository again upon reinstall.
-        ./clean.sh
-        sudo reboot
-        # Restart the installation script from scratch
-        ./stack.sh
-
+    ```bash
+    # Uninstall OpenStack
+    ./unstack.sh
+    # Clean all. Note: the source files (i.e., the result of the git clone command) are
+    # not deleted, hence you may not need to clone the repository again upon reinstall.
+    ./clean.sh
+    sudo reboot
+    # Restart the installation script from scratch
+    ./stack.sh
+    ```
 The OpenStack install is now ready for you to play.
