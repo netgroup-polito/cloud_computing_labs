@@ -1,4 +1,4 @@
-# Cloud Computing Course Laboratories
+# Cloud Computing Course Labs and Exercises
 
 ## Laboratories
 
@@ -48,6 +48,6 @@ More information on the [Creative Commons website](http://creativecommons.org).
 
 ## Acknowledgements
 
-The author would like to thank all the people who contributed to this document
+The authors would like to thank all the people who contributed to this repository, and welcome students that collaborate in improving labs and exercises.
 
 
