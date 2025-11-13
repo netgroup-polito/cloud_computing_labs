@@ -19,7 +19,8 @@ The setup involves two hosts:
 -   **A second VM, hosting a management workstation**. This VM, running on CrownLabs, provides GUI-based access to the previous one, such as the `Cloud Computing: Client VM` instance.
 
 > [!NOTE] 
-> although the second VM seems avoidable, potentially being replaced by an SSH connection from the student's computer to the DevStack VM, we suggest to use it because of the necessity to use a web browser to interact with the DevStack machine. In fact, the interaction with OpenStack is web-based and may rely also on non-standard TCP ports when the console of running VMs is opened, which may be difficult to handle through an SSH connection.
+> Although the second VM seems avoidable, potentially being replaced by an SSH connection from the student's computer to the DevStack VM, we suggest to use it because of the necessity to use a web browser to interact with the DevStack machine.
+> In fact, the interaction with OpenStack is web-based and may rely also on non-standard TCP ports when the console of running VMs is opened, which may be difficult to handle through an SSH connection.
 
 # Installing OpenStack
 
@@ -79,3 +80,9 @@ However, you have to pay attention to the following issues.
     ./stack.sh
     ```
 The OpenStack install is now ready for you to play.
+
+## Creating and playing with VMs
+
+Given the current OpenStack setup, create the following topology involving 2 VMs connected to the "public" network, where (1) the two VMs must be to ping each other, and (2) the first VM can ping the Internet while the second VM cannot.
+
+Tip: use the security policies of OpenStack to prevent the second VM to send/receive traffic to/from the Internet.
