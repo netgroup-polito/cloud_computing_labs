@@ -1,4 +1,4 @@
-# Installing and configuring a Kubernetes cluster with kubeadm
+# 1. Installing and configuring a Kubernetes cluster with kubeadm
 
 We start creating a new Kubernetes cluster, composed of a single control
 plane node and two worker nodes
@@ -11,18 +11,18 @@ on all servers: the CrownLabs images already include them.
 > The setup proposed for this lab does not lead to the creation
 > of a *highly available cluster* (i.e., which can tolerate the failure of
 > a control plane node), and it is therefore not suggested for production
-> workloads. See the [official documentation](http://kubernetes.io/docs/setup/production-environment/tools/> kubeadm/high-availability/) for additional information
+> workloads. See the [official documentation](http://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/) for additional information
 > about this topic. In the current setup, a failure of the control-plane
 > node may lead to data loss in your cluster and you may need to re-create
 > everything from scratch.
 
-<figure id="fig:k8s_cluster" align="center">
+<p id="fig:k8s_cluster" align="center">
     <img src="./images/system.png" width="80%"/>
-    <figcaption align="center">
-        <em>Figure 2.1 Logical setup of the Kubernetes cluster in CrownLabs.</em>
-    </figcaption>
-</figure>
 
+</p>
+    <p align="center">
+        <em>Figure 2.1 Logical setup of the Kubernetes cluster in CrownLabs.</em>
+    </p>
 
 The Kubernetes *control plane*, including as the *api server* and the
 *controller manager*, governs the cluster behavior. Specifically, the
@@ -172,7 +172,7 @@ scp crownlabs@__MASTER_IP__:~/.kube/config $HOME/.kube/
 
 Then you can verify `kubectl` correctly works:
 ```sh
-    kubectl get nodes
+kubectl get nodes
 ```
 > [!TIP]
 > To simplify the interaction with the server, it is strongly
