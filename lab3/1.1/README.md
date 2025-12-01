@@ -54,7 +54,7 @@ control plane controls each node: you will rarely interact with the
 worker nodes directly.
 
 
-## Configuring the control plane node
+## 1.1. Configuring the control plane node
 
 First, select a VM that is supposed to act as **control plane node** and
 change the name of the machine to clarify its function in the Kubernetes
@@ -128,7 +128,7 @@ Once the Cilium configuration completed, the control plane node should
 turn into the *Ready* status. You can check the nodes’ status through
 `kubectl get nodes` command.
 
-## Configuring worker nodes
+## 1.2. Configuring worker nodes
 
 When the control plane node is ready, access the other two VMs to join
 them to the cluster as worker nodes. First, change their hostname for
@@ -161,7 +161,7 @@ kubectl get nodes
 **Question** (left to the student): why the command `kubectl get nodes`
 does not work if issued on a worker node?
 
-## Accessing the cluster from a management workstation (optional)
+## 1.3. Accessing the cluster from a management workstation (optional)
 
 Instead of issuing the `kubectl` commands directly from the control
 plane node, it is possible to use a separate management workstation
