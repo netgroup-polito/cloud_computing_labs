@@ -38,32 +38,8 @@ information about real consumption.
 In order to collect information about pods and nodes resource
 consumption, you need a metrics server:
 ```sh
-    kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.2/components.yaml
+    kubectl apply -f https://raw.githubusercontent.com/netgroup-polito/cloud_computing_labs/refs/heads/main/lab3/1.4/metric-server.yaml
 ```
-To make it work, you have to set the `--kubelet-insecure-tls` flag in
-the metrics-server deployment. In particular, it has to be added to the
-args in `spec.containers`.
-
-This can be done by doing a simple kubectl command:
-```sh
-    kubectl edit deploy metrics-server -n kube-system
-```
-An alternative may be to download the `components.yaml` file and add the
-`--kubelet-insecure-tls` option before applying it.
-```yaml
-    hostNetwork: true
-    containers:
-    - name: metrics-server
-    ....
-      args:
-        - --cert-dir=/tmp
-        - --secure-port=4443
-        - --kubelet-preferred-address-types=InternalIP
-        - --kubelet-insecure-tls=true
-```
-> [!WARNING]
-> Make sure to use spaces rather than `<TAB>` for editing the
-file.
 
 The metric service is now available in Kubernetes:
 ```sh
