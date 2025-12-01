@@ -8,7 +8,7 @@
 # 4. Resource allocation and scaling
 
 This section is inspired by the article “*Kubernetes best practices:
-Resource requests and limits*” from the (Google GCP blog)[https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-resource-requests-and-limits].
+Resource requests and limits*” from the [Google GCP blog](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-resource-requests-and-limits).
 
 So far, we analyzed how we can simply schedule pods on Kubernetes,
 making the assumption that the cluster will always be able to host our
