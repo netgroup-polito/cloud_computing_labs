@@ -99,7 +99,7 @@ applies to all the containers in the pod. Failed containers are
 restarted on the same node with a delay that grows exponentially up to 5
 minutes.
 
-## Define and create a liveness probe for a pod
+## 3.1. Define and create a liveness probe for a pod
 
 To simulate a failure in a reproducible manner, we force failures in a
 Kubernetes deployment, to verify the self-healing properties of
@@ -151,7 +151,7 @@ where the output is supposed to be like:
 NAME         READY     STATUS    RESTARTS   AGE
 echoserver   1/1       Running   0          15s
 ```
-## Define and create a failing liveness probe for a pod
+## 3.2. Define and create a failing liveness probe for a pod
 
 Edit the file echoserver-pod.yaml. Change the pod’s name to
 echoserver-failing, and change the port number (`8080`) in the liveness
