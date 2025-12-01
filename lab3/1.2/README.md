@@ -10,7 +10,7 @@
 Since you have now a fully working Kubernetes cluster, we can use it to
 host some simple applications.
 
-## Listing the running pods
+## 2.1. Listing the running pods
 
 First, let take a look at the running pods. You can see that there are
 no pods running in the *default* namespace:
@@ -33,7 +33,7 @@ for which we ask to see the resources. `kube-system` is the namespace
 for objects created by the Kubernetes system. `default`, on the other
 hand, is the one for objects with no namespace explicitly configured.
 
-## Running a stateless application & service
+## 2.2. Running a stateless application & service
 
 You can run an application by creating a Kubernetes Deployment object,
 and you can describe a Deployment through a YAML file. For example, this
@@ -41,8 +41,6 @@ YAML file describes a Deployment that runs the `nginxdemos/hello` Docker
 image (an NGINX server that serves a simple page containing its
 hostname, IP address and port as wells as the request URI and the local
 time):
-
-enumerate itemize
 
 ``` yaml
 apiVersion: apps/v1
@@ -67,14 +65,7 @@ spec:
           containerPort: 80
 ```
 
-**Warning**: YAML files (e.g. `deployment-nginx.yaml`) strongly rely on
-indentation for their structure. Hence, do *not* copy the previous
-snippet directly from the PDF file, since it will totally scramble the
-indentation. Moreover, before moving on, verify (and fix, if necessary)
-the file layout using an editor of your choice (e.g.,
-`nano deployment-nginx.yaml`).
-
-Create a Deployment based on the YAML file:
+Create a file `deployment-nginx.yaml` with the content of the previous snippet, and create a Kubernetes Deployment based on the YAML file:
 ```sh
 kubectl apply -f deployment-nginx.yaml
 ```
@@ -133,7 +124,6 @@ kubectl create -f service-nginx.yaml
 ```
 
 The YAML file describing the service should be like the following:
-enumerate itemize
 
 ``` yaml
 kind: Service
@@ -177,8 +167,6 @@ kubectl apply -f service-nodeport.yaml
 The patch specifies which port to expose and the new ServiceType, by
 means of `nodePort`.
 
-enumerate itemize
-
 ``` yaml
 kind: Service
 apiVersion: v1
@@ -210,14 +198,6 @@ The two services have different behaviors, indeed:
 Other two service types are available in Kubernets, `LoadBalancer` and
 `ExternalName`, but those are out of scope in this lab.
 
-When using the `NodePort` service type, you can also connect to the
-application from the web browser of your management workstation at
-<a href="http://&lt;IP_MASTER_NODE&gt;:30100"
-class="uri">http://&lt;IP_MASTER_NODE&gt;:30100</a>.
-
-**Warning:** The cluster nodes can only be accessed from your other VMs
-hosted by CrownLabs.
-
 Before proceeding to the next section, it is possible to delete the
 deployed objects:
 ```sh
@@ -226,7 +206,7 @@ kubectl delete -f service-nginx-nodeport.yaml
 kubectl delete -f deployment-nginx.yaml
 ```
 
-## Stateful applications & storage provisioner
+## 2.3. Stateful applications & storage provisioner
 
 On-disk files in a container are ephemeral, which is problematic in case
 of stateful applications. First, when a container crashes, the *kubelet*
@@ -243,14 +223,15 @@ request for storage by a user, which eventually triggers the creation of
 the associated PersistentVolume (when dynamic creation is supported) and
 binds a pod to it.
 
-### Creating the Storage Class
+### 2.3.1. Creating the Storage Class
 
 In this lab we leverage `Local Persistent Volumes`, hence backing
 PersistentVolumeClaim objects with local storage on the physical nodes.
 To simplify the provisioning of the volumes, we will use the *Local Path
-Provisioner* plugin[^3].
+Provisioner* plugin.
 
-**Warning**: Local volumes are not appropriate for most applications.
+> [!WARNING] 
+> Local volumes are not appropriate for most applications.
 Using local storage ties your application to that specific node, making
 it harder to be scheduled. If that node or local volume encounters a
 failure and becomes inaccessible, then that pod also becomes
@@ -277,7 +258,7 @@ the corresponding *StorageClass*.
 kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.23/deploy/local-path-storage.yaml
 ```
 
-### Deploying MySQL
+### 2.3.2. Deploying MySQL
 
 Once a StorageClass is available, it is possible to proceed running a
 stateful application. To this end, the following listing describes a
@@ -286,8 +267,6 @@ container. The replica is associated to a persistent volume
 automatically created through the defined template (i.e., specifying the
 StorageClass, and the volume size), and mounted at the `/var/lib/mysql`
 path within the container.
-
-enumerate itemize
 
 ``` yaml
 apiVersion: apps/v1
@@ -332,7 +311,8 @@ spec:
       storageClassName: local-path
 ```
 
-**Note**: The mysql password is defined in the configuration, and this
+> [!NOTE] 
+> The mysql password is defined in the configuration, and this
 is insecure. Kubernetes Secrets represent a more secure solution.
 
 The above manifest can be applied through:
@@ -360,7 +340,7 @@ kubectl describe pvc mysql-persistent-storage-mysql-0
 Specifically, you can check that the status is *Bound*, and the capacity
 is as expected.
 
-### Accessing the DB
+### 2.3.3. Accessing the DB
 
 Once the pod is ready, it is possible to connect to the MySQL server:
 ```sh
@@ -370,15 +350,15 @@ kubectl exec -it statefulset/mysql -- mysql --user=root --password=password
 You have entered the pod, and opened the mysql console. If the database
 is up and running, you should see an output like this:
 ```sh
-    mysql>
+mysql>
 ```
 Once you are connected to the MySQL server, a welcome message is
 displayed and the `mysql>` prompt appears, at which SQL statements are
 to be sent to the server for execution. You can create a new database by
 using a `CREATE DATABASE` statement:
 ```sh
-    mysql> CREATE DATABASE pets;
-    Query OK, 1 row affected (0.01 sec)
+mysql> CREATE DATABASE pets;
+Query OK, 1 row affected (0.01 sec)
 ```
 and check if the database has been created:
 ```sh
@@ -417,7 +397,8 @@ previous steps:
 ```
 You can see the `pets` database is still available.
 
-**Note.** Do not change the number of replicas of MySQL: the database is
+> [!NOTE]
+> Do not change the number of replicas of MySQL: the database is
 not configured to work in a high-availability setup.
 
 Before proceeding to the next section, it is possible to delete the
