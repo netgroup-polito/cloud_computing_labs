@@ -140,16 +140,16 @@ root path. It specifies also other fields:
 
 Create the echoserver pod:
 ```sh
-    kubectl create -f echoserver-pod.yaml
+kubectl create -f echoserver-pod.yaml
 ```
 Check that the pod is running and there are no restarts:
 ```sh
-    kubectl get pod echoserver
+kubectl get pod echoserver
 ```
 where the output is supposed to be like:
 ```
-    NAME         READY     STATUS    RESTARTS   AGE
-    echoserver   1/1       Running   0          15s
+NAME         READY     STATUS    RESTARTS   AGE
+echoserver   1/1       Running   0          15s
 ```
 ## Define and create a failing liveness probe for a pod
 
@@ -181,28 +181,28 @@ Since the echoserver pod will not respond on port 8081, the liveness
 probe will fail. To check this behavior, create a new echoserver-failing
 pod:
 ```sh
-    kubectl create -f echoserver-pod-failing.yaml
+kubectl create -f echoserver-pod-failing.yaml
 ```
 Then, monitor the status of the pods:
 ```sh
-    kubectl get pod --watch
+kubectl get pod --watch
 ```
 You should notice that the restart count of the pod with the failing
 liveness probe keeps increasing.
 ```
-    NAME                READY     STATUS    RESTARTS   AGE
-    echoserver-failing  1/1       Running   2          1m
+NAME                READY     STATUS    RESTARTS   AGE
+echoserver-failing  1/1       Running   2          1m
 ```
 As you can see, Kubernetes has restarted our pod several times. You can
 run the following command to investigate what it is happening in detail:
 ```sh
-    kubectl describe pod echoserver-failing
+kubectl describe pod echoserver-failing
 ```
 In the output of `kubectl describe`, in the Events section, you can see
 the following information:
 ```
-    Killing    76s  Container echoserver failed liveness probe, will be restarted
-    Unhealthy  56s  Liveness probe failed: ...
+Killing    76s  Container echoserver failed liveness probe, will be restarted
+Unhealthy  56s  Liveness probe failed: ...
 ```
 As the failure is auto-generated, it will never reach a stable state,
 that satisfies the desired property. On the contrary, generally faults
@@ -212,8 +212,8 @@ accomplished, unless configuration errors are present.
 Before proceeding with the next task, clean the Kubernetes environment
 with:
 ```sh
-    kubectl delete pod echoserver-failing
-    kubectl delete pod echoserver
+kubectl delete pod echoserver-failing
+kubectl delete pod echoserver
 ```
 **To sum up.** Kubernetes provides key mechanisms that allow users to
 monitor containers’ health and restart them in case of failures: probes
