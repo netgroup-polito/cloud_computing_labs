@@ -243,32 +243,32 @@ To test the scaling of the application, we use a php server based on the
 apache web server. It defines an `index.php` page which performs some
 CPU intensive computations:
 ```php
-    <?php
-        $x = 0.0001;
-        for ($i = 0; $i <= 1000000; $i++) {
-        $x += sqrt($x);
-        }
-        echo "OK!";
-    ?>
-
+<?php
+    $x = 0.0001;
+    for ($i = 0; $i <= 1000000; $i++) {
+    $x += sqrt($x);
+    }
+    echo "OK!";
+?>
+```
 First, start a deployment running the image containing the server, and
 expose it as a service:
 ```sh
-    kubectl create deploy php-apache --image=k8s.gcr.io/hpa-example --port=80
-    kubectl expose deploy php-apache --port=80
+kubectl create deploy php-apache --image=k8s.gcr.io/hpa-example --port=80
+kubectl expose deploy php-apache --port=80
 ```
 Let’s edit the deployment, specifying the requests and limits in the
 resources section:
 ```yaml
-    ...
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "250m"
-    ...
+...
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "250m"
+...
 ```
 Now that the server is running, we create the autoscaler using
 `kubectl autoscale` command.
@@ -286,8 +286,8 @@ of 25%.
 > We set the value of 25% CPU utilization for testing purposes
 and to not overload the cluster. In production-grade solutions, a
 reasonable value is 50%, but this may change according to the business
-logic. For more details on the autoscaling algorithm see the (official
-documentation)[https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale].
+logic. For more details on the autoscaling algorithm see the [official
+documentation](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale).
 
 Check the current status of autoscaler by running:
 ```sh
