@@ -29,15 +29,15 @@ service resources however they prefer.
 
 Let’s deploy an application:
 ```sh
-    kubectl apply -f https://raw.githubusercontent.com/liqotech/microservices-demo/master/release/kubernetes-manifests.yaml
+kubectl apply -f https://raw.githubusercontent.com/netgroup-polito/cloud_computing_labs/refs/heads/main/lab3/1.5/deploy/application.yaml
 ```
-## Services
+## 5.1. Services
 
 We may observe that this a micro-service based website, with multiple
 deployments and service. The “frontend” service exposes a web server to
 serve the end-user.
 
-### Exercise
+### 5.1.1. Exercise
 
 Let’s have a look at the services we just created:
 
@@ -46,13 +46,13 @@ Let’s have a look at the services we just created:
 - Why does the “frontend-external” service remain with a “Pending”
   external IP?
 
-## Ingress
+## 5.2. Ingress
 
 An Ingress exposes HTTP and HTTPS routes from outside the cluster to
 services within the cluster. Traffic routing is controlled by rules
 defined on the Ingress resource.
 
-### Exercise
+### 5.2.1. Exercise
 
 With the commands you used in the previous exercise create a deployment
 and a service.
@@ -75,12 +75,12 @@ NGINX configuration file (nginx.conf) in the ingress-controller pod.
 
 NGINX Ingress Controller can be easily installed via:
 ```sh
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/baremetal/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/baremetal/deploy.yaml
 ```
 Additionally, let configure the NGINX Ingress Controller as the default
 one, so that each new ingress resource is automatically bound to it:
 ```sh
-    kubectl annotate ingressclass nginx ingressclass.kubernetes.io/is-default-class=true
+kubectl annotate ingressclass nginx ingressclass.kubernetes.io/is-default-class=true
 ```
 If we observe the services exposed
 (`kubectl get services -n ingress-nginx`), we may notice that we can
@@ -90,9 +90,9 @@ have any external integration for a LoadBalancer service.
 This apply will create a custom namespace. Let’s investigate which pod
 are deployed:
 ```sh
-    kubectl get po -n ingress-nginx
+kubectl get po -n ingress-nginx
 ```
-### Exercise
+### 5.2.2. Exercise
 
 Let’s inspect the frontend service of the application we just deployed:
 
@@ -101,7 +101,6 @@ Let’s inspect the frontend service of the application we just deployed:
 - Let’s create an Ingress with the following values. What parts of the
   infrastructure are missing to properly use it?
 
-enumerate itemize
 
 ``` yaml
 apiVersion: networking.k8s.io/v1
@@ -122,19 +121,24 @@ spec:
               number: 80
 ```
 
-Let’s try if the ingress configuration is effective:
+First let's create the ingress resource:
 ```sh
-    kubectl get ingress
+kubectl create -f ingress.yaml
+```
+
+Now, let’s try if the ingress configuration is effective:
+```sh
+kubectl get ingress
 ```
 
 ```
-    NAMESPACE   NAME              CLASS   HOSTS               ADDRESS         PORTS
-    default     minimal-ingress   nginx   www.example.local   172.16.134.52   80, 443
+NAMESPACE   NAME              CLASS   HOSTS               ADDRESS         PORTS
+default     minimal-ingress   nginx   www.example.local   172.16.134.52   80, 443
 ```
 Despite the cluster has not external DNS integration, we can test the
 functionality of the ingress using curl:
 ```sh
-    curl -H "Host: www.example.local" ADDRESS:NODE_PORT
+curl -H "Host: www.example.local" ADDRESS:NODE_PORT
 ```
 **Warning:** since the ingress controller is exposed through a NodePort
 service, it cannot be accessed directly on port 80. Instead, it is
@@ -147,11 +151,9 @@ The `-H` option adds a custom headers to our request. We specified the
 redirect our request to the specific webserver in charge of that website
 using the *domain name* instead of the server *IP address*. This allows
 re-using the same IP address for different websites, served by different
-(and independent) web servers, as shown in
-<a href="#fig:ingress-vhost" data-reference-type="ref+label"
-data-reference="fig:ingress-vhost">7.1</a>.
+(and independent) web servers.
 
-### Ingress resources vs. virtual hosts
+### 5.2.3. Ingress resources vs. virtual hosts
 
 While sometimes it seems that the ingress controller looks similar to
 have a webserver (such as `nginx` or `apache`) hosting multiple websites
