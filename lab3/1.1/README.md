@@ -116,7 +116,7 @@ CrownLabs, due to the underlying technology.
 Cilium can be installed through the provided CLI:
 ```sh
 # Download the Cilium CLI
-curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-amd64tar.gz
+curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/download/v0.16.24/cilium-linux-amd64.tar.gz
 # Uncompress the TAR in the /usr/local/bin folder
 sudo tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin
 rm cilium-linux-amd64.tar.gz
@@ -161,7 +161,7 @@ kubectl get nodes
 **Question** (left to the student): why the command `kubectl get nodes`
 does not work if issued on a worker node?
 
-## Accessing the cluster from a management workstation
+## Accessing the cluster from a management workstation (optional)
 
 Instead of issuing the `kubectl` commands directly from the control
 plane node, it is possible to use a separate management workstation
