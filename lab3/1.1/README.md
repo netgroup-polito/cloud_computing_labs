@@ -192,38 +192,3 @@ kubectl get nodes
 > source $HOME/.bashrc
 > ```
 
-## Deploying the Kubernetes Dashboard
-
-To simplify the interaction with the cluster, it is possible to use the
-official Kubernetes dashboard. The Dashboard UI is not deployed by
-default. To deploy it, run the following command:
-```sh
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-```
-To protect your cluster data, the dashboard deploys with a minimal RBAC
-configuration by default. Currently, it only supports Bearer Token
-authentication. To create a token with administrative privileges for
-this lab, you can proceed as follows:
-```sh
-kubectl create serviceaccount -n kubernetes-dashboard dashboard-admin
-kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin \
-    --serviceaccount=kubernetes-dashboard:dashboard-admin
-```
-Then you can retrieve the authentication token:
-```sh
-NAME=$(kubectl get serviceaccount -n kubernetes-dashboard dashboard-admin \
-    --no-headers -o custom-columns=':.secrets[0].name')
-TOKEN=$(kubectl get secret -n kubernetes-dashboard $NAME \
-    -o custom-columns=":.data.token" --no-headers | base64 -d)
-echo Token: $TOKEN
-```
-By default, the Dashboard is exposed through a ClusterIP service, which
-can only be accessed from within the cluster. One of the possibilities
-to access it from the management workstation is to leverage the
-`kubectl port-forward` command, which forwards all traffic sent to a
-local port (e.g., 8443) to the port of a remote service:
-```sh
-kubectl port-forward -n kubernetes-dashboard svc/kubernetes-dashboard 8443:443
-```
-Then, the Dashboard can be accessed through a browser at
-<https://localhost:8443>.
