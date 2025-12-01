@@ -309,7 +309,9 @@ run it in a different terminal):
     kubectl run -it --rm load-generator \
         --image=harbor.crownlabs.polito.it/proxy/library/busybox:1.34 -- /bin/sh
 ```
-    If you don't see a command prompt, try pressing enter.
+
+If you don't see a command prompt, try pressing enter.
+
 ```sh
     while true; do wget -q -O- http://php-apache.default.svc.cluster.local; done
 ```
