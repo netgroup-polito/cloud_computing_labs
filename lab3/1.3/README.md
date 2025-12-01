@@ -1,4 +1,11 @@
-# 3.3 Self-healing applications with Kubernetes
+<table style="width:100%">
+  <tr>
+    <td align="left"><a href="../1.2/README.md">⬅️ Previous</a></td>
+    <td align="right"><a href="../1.4/README.md">Next ➡️</a></td>
+  </tr>
+</table>
+
+# 3. Self-healing applications with Kubernetes
 
 One of the most in-demand container orchestration features is monitoring
 of containers’ health and ability of the orchestrator to deal with

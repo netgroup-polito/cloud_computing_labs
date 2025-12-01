@@ -1,4 +1,11 @@
-# 3.5 Expose an application using Kubernetes
+<table style="width:100%">
+  <tr>
+    <td align="left"><a href="../1.4/README.md">⬅️ Previous</a></td>
+    <td align="right"><a href="../README.md">End ✅</a></td>
+  </tr>
+</table>
+
+# 5. Expose an application using Kubernetes
 
 There are several ways to expose an application outside a Kubernetes
 cluster.

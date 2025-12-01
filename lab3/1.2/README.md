@@ -1,4 +1,11 @@
-# Deploying simple applications through Kubernetes
+<table style="width:100%">
+  <tr>
+    <td align="left"><a href="../1.1/README.md">⬅️ Previous</a></td>
+    <td align="right"><a href="../1.3/README.md">Next ➡️</a></td>
+  </tr>
+</table>
+
+# 2. Deploying simple applications through Kubernetes
 
 Since you have now a fully working Kubernetes cluster, we can use it to
 host some simple applications.

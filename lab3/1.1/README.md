@@ -1,3 +1,10 @@
+<table style="width:100%">
+  <tr>
+    <td align="left"><a href="../README.md">⬅️ Previous</a></td>
+    <td align="right"><a href="../1.2/README.md">Next ➡️</a></td>
+  </tr>
+</table>
+
 # 1. Installing and configuring a Kubernetes cluster with kubeadm
 
 We start creating a new Kubernetes cluster, composed of a single control

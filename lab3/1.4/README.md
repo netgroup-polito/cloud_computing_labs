@@ -1,4 +1,11 @@
-# 3.4 Resource allocation and scaling
+<table style="width:100%">
+  <tr>
+    <td align="left"><a href="../1.3/README.md">⬅️ Previous</a></td>
+    <td align="right"><a href="../1.5/README.md">Next ➡️</a></td>
+  </tr>
+</table>
+
+# 4. Resource allocation and scaling
 
 This section is inspired by the article “*Kubernetes best practices:
 Resource requests and limits*” from the (Google GCP blog)[https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-resource-requests-and-limits].
