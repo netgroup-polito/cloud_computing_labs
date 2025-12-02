@@ -167,8 +167,6 @@ The following presents an example pod configuration, composed of two
 containers, each with the amount of resources specified in the
 appropriate section:
 
-enumerate itemize
-
 ``` yaml
 apiVersion: v1
 kind: Pod
