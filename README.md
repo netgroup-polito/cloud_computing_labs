@@ -20,6 +20,9 @@
   <td><img src="./images/kubernetes.png" alt="Lab3 Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
     <td><a href="./lab3/README.md"><b>Lab3 - Kubernetes</b></a></td>
   </tr>
+  <td><img src="./images/hugo.png" alt="Lab4 Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
+    <td><a href="./lab4/README.md"><b>Lab4 - Deploying Websites on Kubernetes</b></a></td>
+  </tr>
 </table>
 
 ## Exercises
