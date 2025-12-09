@@ -23,7 +23,9 @@ To select the appropriate resource configuration, let consider the following req
     including a trusted wildcard certificate;
 
 3.  the Kubernetes nodes are characterized by private IP addresses, and
-    LoadBalancer services cannot be used;
+    LoadBalancer services cannot be used. However, CrownLabs provides a
+    pre-configured Ingress controller (`nginx-external`) to expose services
+    externally (through Ingress resources);
 
 4.  (bonus) the application should survive the failure of a Kubernetes
     worker node, without notice from possible clients.
