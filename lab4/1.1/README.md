@@ -32,9 +32,19 @@ Specifically, we will use:
     the resulting website. You can leverage [Docker Hub](https://hub.docker.com/) (you need to
     either have or create a free account), or Harbor, a [registry made available by CrownLabs](https://harbor.crownlabs.polito.it/). 
     To access the Harbor dashboard, you need to use your CrownLabs credentials; then, click on your username (top right of the page), select the *User Profile* tab and copy the CLI
-    secret: that is the password to use to login with the `docker login`
-    command. To push images on Harbor, their tag shall be composed of
+    secret: that is the password to use to login with the `docker login` command.
+    By default the docker login targets Docker Hub, however you can use any other image registry by specifying their URL.
+    For instance, to login to Crownlabs' Harbor you can use:
+    ```sh
+    docker login harbor.crownlabs.polito.it
+    ```
+    To push images on Harbor, their tag shall be composed of
     the entire registry url, the `cloud-sandbox` repository and the
     student’s ID as image name prefix. For instance, a student with ID
-    `s123098` could tag an image as
-    `harbor.crownlabs.polito.it/cloud-sandbox/s123098/website:v0.1`
+    `sXXXXXX` could tag an image as
+    `harbor.crownlabs.polito.it/cloud-sandbox/sXXXXXX/website:v0.1`.
+    Once logged in, you can push the image just as usual and it will be uploaded to the Harbor registry. For instance:
+    ```sh
+    docker push harbor.crownlabs.polito.it/cloud-sandbox/sXXXXXX/website:v0.1
+    ```
+    On successful push, you should see the image appearing in your Harbor dashboard, under the [cloud-sandbox repository](https://harbor.crownlabs.polito.it/harbor/projects/42/repositories).
