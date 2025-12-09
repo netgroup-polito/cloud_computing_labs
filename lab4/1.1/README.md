@@ -23,10 +23,10 @@ Specifically, we will use:
     information about how to configure your management workstation to
     interact with the sandbox namespace is available on the [CrownLabs
     website](https://crownlabs.polito.it/resources/sandbox/).
-    > [!WARNING]
-    > Given you are using a shared infrastructure, your account is associated with limited permissions.
-    > In particular, you cannot access resources outside of your namespace, or cluster-wide resources (e.g., nodes).
-    > Nonetheless, be respectful of others: do not attempt to perform operations which might damage other users or the CrownLabs infrastructure itself.
+  > [!WARNING]
+  > Given you are using a shared infrastructure, your account is associated with limited permissions.
+  > In particular, you cannot access resources outside of your namespace, or cluster-wide resources (e.g., nodes).
+  > Nonetheless, be respectful of others: do not attempt to perform operations which might damage other users or the CrownLabs infrastructure itself.
 
 3.  A **public docker registry**, to publish the docker image containing
     the resulting website. You can leverage [Docker Hub](https://hub.docker.com/) (you need to
