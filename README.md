@@ -32,6 +32,10 @@
     <td><img src="./images/openstack.png" alt="Exercise1 Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
     <td><a href="./exercise1/README.md"><b>Exercise1 - Setting up OpenStack and creating VM-based services </b></a></td>
   </tr>
+  <tr>
+    <td><img src="./images/Argo.png" alt="Exercise2 Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
+    <td><a href="./exercise2/README.md"><b>Exercise2 - GitOps with ArgoCD</b></a></td>
+  </tr>
 </table>
 
 ## License
