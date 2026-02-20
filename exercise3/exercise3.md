@@ -810,6 +810,9 @@ To continue, create **two GitHub repositories**:
 
 Make sure **at least the application repository is public** to avoid issues when pulling container images.
 
+> [!WARNING]
+> Please do not fork the repositories used for the demo. Instead, clone them and push the code to a new repository under your own GitHub account, as forking may cause issues with GitHub Actions permissions and workflow execution.
+
 #### Enable GitHub Actions package permissions
 To allow GitHub Actions to build and push container images, you must enable write permissions for `GITHUB_TOKEN`.
 In the **application repository**:
