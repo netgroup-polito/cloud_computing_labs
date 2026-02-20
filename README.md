@@ -36,6 +36,10 @@
     <td><img src="./images/Argo.png" alt="Exercise2 Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
     <td><a href="./exercise2/README.md"><b>Exercise2 - GitOps with ArgoCD</b></a></td>
   </tr>
+  <tr>
+    <td><img src="./images/Argo.png" alt="Exercise3 Icon" width="50" style="background-color:white;border-radius: 15px;"></td>
+    <td><a href="./exercise3/README.md"><b>Exercise3 - DevOps in Kubernetes</b></a></td>
+  </tr>
 </table>
 
 ## License
