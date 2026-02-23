@@ -822,7 +822,7 @@ In the **application repository**:
 
 This allows `GITHUB_TOKEN` to publish packages.
 
-#### Allow the application repo to push to the GitOps repo
+#### Allow the application repo to push to the GitOps repo
 To enable the application repository to update the GitOps repository, create a **fine-grained Personal Access Token (PAT)** with:
 - **Contents: Read & Write** access
 - Scope limited to the **GitOps repository**
@@ -852,7 +852,7 @@ Store this token as a secret in the **application repository** with the name `GI
 Also define these as variables to application repository:
 - In the **application repository**, go to **Settings** → **Secrets and variables** → **Actions** → Variables → **New repository variable**
     - `GITOPS_REPO` like `my-org/my-gitops-repo`
-    - `APP_NAME` like `challenge-app`
+    - `APP_NAME` like `challenge-app` 
 
 ## Argo CD CR
 To allow Argo CD to understand what it needs to deploy, we must create and apply a Custom Resource (CR) that instructs Argo CD to watch a specific Helm chart and its corresponding configuration.
