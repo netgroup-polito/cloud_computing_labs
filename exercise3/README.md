@@ -1,5 +1,5 @@
 > [!WARNING]
-> This exercise requires the access to specific resources in Crownlabs. If you want to replicate the exact scenario please contact us at [stefano.galantino@polito.it](mailto:stefano.galantino@polito.it).
+> This exercise requires the access to specific resources in Crownlabs. If you want to replicate the exact scenario please contact us at [stefano.galantino@polito.it](mailto:stefano.galantino@polito.it) and [jacopo.marino@polito.it](mailto:jacopo.marino@polito.it).
 
 # Exercise 3 - DevOps in Kubernetes
 The goal of this exercise is to set up an infrastructure with three environments (dev, test, and prod) and a management VM to control them.
