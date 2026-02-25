@@ -26,6 +26,7 @@ These VMs are created and managed entirely through the Crownlabs platform.
 
 > [!WARNING]
 > If you would like to connect to these VMs from your local machine, you need to upload your SSH public key to the CrownLabs dashboard **before creating the VMs**. Please follow the instructions provided [here](https://crownlabs.polito.it/resources/crownlabs_ssh/) to complete the setup.
+> Please use the bastion `ssh.ng.crownlabs.polito.it` and not the default one `ssh.crownlabs.polito.it` in the ready SSH command, otherwise you will not be able to connect to the VMs.
 
 To create a new VM, open the Crownlabs dashboard and navigate to the **workspace**. There, you will see the list of available VMs.
 To create a new VM, click the **Create** button.
