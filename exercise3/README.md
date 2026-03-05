@@ -866,6 +866,9 @@ In this setup, Argo CD must be configured to use two sources:
 
 Below are the three YAML files required to configure Argo CD to deploy the application to the corresponding cluster. Make sure to replace each `repoURL` with your own repository URL and adjust the manifests to match your final repository structure.
 
+> [!NOTE]
+> The Argo CD manifests must be applied to the cluster running in the management VM.
+
 ### Dev cluster
 To deploy applications to the dev cluster, create and open the `manifest-dev.yaml` file using the following command:
 ```bash
@@ -912,6 +915,11 @@ spec:
           selfHeal: true
 ```
 
+Apply the manifest:
+```bash
+kubectl apply -f manifest-dev.yaml
+```
+
 ### Test cluster
 To deploy applications to the test cluster, create and open the `manifest-test.yaml` file using the following command:
 ```bash
@@ -947,6 +955,11 @@ spec:
       selfHeal: true
 ```
 
+Apply the manifest:
+```bash
+kubectl apply -f manifest-test.yaml
+```
+
 ### Prod cluster
 To deploy applications to the prod cluster, create and open the `manifest-prod.yaml` file using the following command:
 ```bash
@@ -980,6 +993,11 @@ spec:
       enabled: true
       prune: true
       selfHeal: true
+```
+
+Apply the manifest:
+```bash
+kubectl apply -f manifest-prod.yaml
 ```
 
 ## K8s ImagePullBackOff error
