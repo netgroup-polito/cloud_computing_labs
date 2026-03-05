@@ -236,7 +236,7 @@ NAME            TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)                 
 argocd-server   NodePort   10.43.140.82   <none>        80:3XXXX/TCP,443:30443/TCP   5m4s
 ```
 
-#### Access the Argo CD UI
+#### Access the Argo CD UI
 Open a browser **on the VM** and navigate to:
 ```bash
 https://localhost:30443
@@ -744,7 +744,7 @@ Instead:
 This matches the “GitOps” model used in many organizations.
 
 ### Dev Workflow (Feature Branches → Dev Cluster)
-#### Trigger
+#### Trigger
 Every Pull Request (PR) to `main` branch
 
 #### Actions
@@ -779,7 +779,7 @@ Result: main always represents the current “integration-tested” version in t
 #### Trigger
 A new GitHub Release (or tag) is created
 
-#### Hard requirement: Release must come from main
+#### Hard requirement: Release must come from main
 Before deploying:
 - The pipeline verifies that the **tagged commit is reachable from main**
 - If not, the pipeline fails and production deployment is blocked
@@ -817,7 +817,7 @@ Make sure **at least the application repository is public** to avoid issues when
 > [!WARNING]
 > Please do not fork the repositories used for the demo. Instead, clone them and push the code to a new repository under your own GitHub account, as forking may cause issues with GitHub Actions permissions and workflow execution.
 
-#### Enable GitHub Actions package permissions
+#### Enable GitHub Actions package permissions
 To allow GitHub Actions to build and push container images, you must enable write permissions for `GITHUB_TOKEN`.
 In the **application repository**:
 1. Go to **Settings → Actions → General**
