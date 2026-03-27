@@ -189,7 +189,7 @@ argocd-server-7fb8c5f74-b69zk                       1/1     Running   0         
 
 Wait until **all pods are in Running state**. You may need to run the command multiple times while the cluster initializes.
 
-#### Expose the Argo CD UI via NodePort
+#### Expose the Argo CD UI via NodePort
 By default, the Argo CD server is exposed as a `ClusterIP` service.
 To access the UI from your VM, we will patch it to a `NodePort`.
 First, list all services in the `argocd` namespace:
