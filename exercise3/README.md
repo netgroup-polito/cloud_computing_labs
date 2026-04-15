@@ -43,7 +43,7 @@ To create a new VM, click the **Create** button.
 Once provisioned, the infrastructure is organized as follows:
 - The **management VM (mgmt)**, equipped with a GUI, is used for central management and it hosts:
     - Kubernetes cluster
-    - [**Argo CD](https://argo-cd.readthedocs.io/en/stable/)** (Continuous Deployment tool)
+    - [**Argo CD**](https://argo-cd.readthedocs.io/en/stable/) (Continuous Deployment tool)
 - The **dev**, **test**, and **prod** environment VMs, with just the terminal interface, are used for application deployment and they host:
     - Kubernetes clusters
     - Demo application at appropriate state (dev, test, or prod)
