@@ -52,7 +52,13 @@ Each environment VM runs its own Kubernetes cluster to ensure proper isolation b
 
 The Kubernetes distribution chosen for this Challenge is [**K3s**](https://k3s.io/), selected for its lightweight footprint, fast installation, and suitability for single-node clusters.
 
+Here you can find the interaction between components in the infrastructure for management.
+
 ![logical-schema-infrastructure.drawio.png](/exercise3/res/logical-schema-infrastructure.drawio.png)
+
+Here you can find the logical flow of operations for application deployment.
+
+![logic-flow.drawio.png](/exercise3/res/logic-flow.drawio.png)
 
 ## Prerequisites for all VMs
 Before proceeding with the setup, ensure that all VMs are up to date.
