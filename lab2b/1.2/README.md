@@ -99,7 +99,7 @@ Create or edit the file `/etc/docker/daemon.json` as follows:
 
 ```json
 {
-  "mtu": 1400
+  "mtu": 1340
 }
 ```
 
