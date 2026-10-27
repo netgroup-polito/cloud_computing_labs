@@ -122,8 +122,8 @@ In case of problems, you can leverage the following command that copies all the 
 ```bash
 for LIB in $(ldd /bin/bash | grep --only-matching --perl-regexp '/.*(?= \(0x)'); do \
     DEST="docker-lab/chroot$LIB"; \
-    mkdir --parent "$(dirname $DEST)"; \
-    cp --verbose "$LIB" $DEST; done
+    sudo mkdir --parent "$(dirname $DEST)"; \
+    sudo cp --verbose "$LIB" $DEST; done
 ```
 
 Finally, observe the content of the `chroot` directory by typing `tree docker-lab/chroot` (or, if you prefer, `ls -l --recursive docker-lab/chroot`).
