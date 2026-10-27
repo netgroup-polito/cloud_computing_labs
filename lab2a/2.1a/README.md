@@ -9,7 +9,9 @@
 
 For this lab, two possible configurations are possible:
 
- - This lab requires a physical setup such as depicted in Figure 1. Each student will be provided with a couple of VMs running in the POLITO datacenter, accessible through the **Crownlabs dashboard**, which represents a **client** and a server.
+ - **PREFERRED**. If you created an **SSH key** on your local machine and copied it in the **Crownlabs dashboard**, you can directly connect through SSH to the Server VM (**Cloud Computing: Docker" laboratory template**), either through the terminal on your machine or the web terminal provided in Crownlabs. Please follow the instructions on the CrownLabs website (section *Resources*) if you want to explore this method.
+
+ - Alternatively, this lab requires a physical setup such as depicted in Figure 1. Each student will be provided with a couple of VMs running in the POLITO datacenter, accessible through the **Crownlabs dashboard**, which represents a **client** and a server.
    
    <p align="center">
     <img src="./images/lab-physical-setup-1.png" alt="Physical setup: how to connect to your virtualized resources." width="80%">
@@ -20,4 +22,4 @@ For this lab, two possible configurations are possible:
 
    On the **server** side, this lab operates with a single VM, where we can complete all our exercises.
 
- - **PREFERRED**. Alternatively, if you created an **SSH key** on your local machine and copied it in the **Crownlabs dashboard**, you can directly connect through SSH to the Server VM (**Cloud Computing: Docker" laboratory template**), avoiding the use of the Client VM. Please follow the instructions on the CrownLabs website (section *Resources*) if you want to explore this method.
+
