@@ -97,14 +97,14 @@ In the following, you will be guided along the execution of a `bash` shell withi
 To begin, let's create the directory that will be mounted as `/` in the `chroot` environment:
 
 ```bash
-mkdir --parents docker-lab/chroot
+sudo mkdir --parents docker-lab/chroot
 ```
 
 Then, copy the `bash` executable into the `docker-lab/chroot/bin` directory:
 
 ```bash
-mkdir --parents docker-lab/chroot/bin
-cp --verbose /bin/bash docker-lab/chroot/bin
+sudo mkdir --parents docker-lab/chroot/bin
+sudo cp --verbose /bin/bash docker-lab/chroot/bin
 ```
 
 > [!NOTE]
