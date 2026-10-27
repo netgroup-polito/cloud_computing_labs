@@ -14,7 +14,7 @@ For this lab, two possible configurations are possible:
  - Alternatively, this lab requires a physical setup such as depicted in Figure 1. Each student will be provided with a couple of VMs running in the POLITO datacenter, accessible through the **Crownlabs dashboard**, which represents a **client** and a server.
    
    <p align="center">
-    <img src="./images/lab-physical-setup-1.png" alt="Physical setup: how to connect to your virtualized resources." width="80%">
+    <img src="./images/lab-physical-setup.png" alt="Physical setup: how to connect to your virtualized resources." width="80%">
    </p>
    <p align="center"><em>Figure 1: Physical setup — how to connect to your virtualized resources.</em></p>
 
