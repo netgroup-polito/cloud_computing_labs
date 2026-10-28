@@ -43,7 +43,7 @@ services:
     networks:
       - dockerlab-network
 
-  mariadb:
+  dockerlab-mariadb:
     image: mariadb:10.7
     environment:
       MYSQL_DATABASE: database
