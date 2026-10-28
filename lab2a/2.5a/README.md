@@ -134,6 +134,8 @@ If both pings succeed, you have successfully created IP connectivity between `ns
 ## 5.5. Adding a Second Namespace and Enabling IP Forwarding
 
 Now, repeat the previous steps to create a second namespace (`ns2`), a new `veth` pair, and configure the IP addresses.
+> [!NOTE]
+> Work through these steps on your own first, since that’s the best way to learn the process. If you get stuck and want to check the correct commands, [you can find them here](https://github.com/netgroup-polito/cloud_computing_labs/tree/main/lab2a/2.5a#56-full-configuration-script). 
 
 Next, enable IP forwarding in the root namespace to make it act as a router:
 
@@ -157,7 +159,7 @@ When trying to ping from one namespace to the other, you will notice they are no
 sudo ip netns exec ns1 ping 10.255.2.2
 ```
 
-> [!HINT] 
+> [!TIP] 
 > The issue lies in the **routing tables**.
 > Each namespace must know how to reach the other via the root namespace.
 
